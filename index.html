@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Katherine Reads — The 100 Greatest Books of All Time</title>
+<meta name="description" content="Katherine's running list of the 100 greatest books of all time, ranked — each with a tier grade, a one-line take, and a link to grab a copy.">
+<meta name="theme-color" content="#FBF7F0">
+
+<!-- Open Graph / social sharing -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Katherine Reads — The 100 Greatest Books of All Time">
+<meta property="og:description" content="A running list of the 100 greatest books of all time, ranked. Tier grades, one-line takes, and links to grab a copy.">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23FBF7F0'/%3E%3Ctext x='50' y='72' font-family='Georgia,serif' font-size='64' font-weight='600' text-anchor='middle' fill='%23B07A52'%3EK%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: #FBF7F0;
+    color: #4A3B30;
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+  }
+  a:focus-visible, input:focus-visible, button:focus-visible {
+    outline: 2px solid #B07A52;
+    outline-offset: 3px;
+    border-radius: 3px;
+  }
+  ::selection { background: #C9A24B40; }
+
+  .wrap { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+
+  /* Search */
+  .search {
+    width: 100%;
+    max-width: 360px;
+    margin: 0 auto;
+    display: block;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 15px;
+    color: #4A3B30;
+    background: #FFFDF9;
+    border: 1px solid #EAE2D4;
+    border-radius: 999px;
+    padding: 11px 18px;
+    text-align: center;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+  .search::placeholder { color: #A8987F; }
+  .search:focus { border-color: #B07A52; box-shadow: 0 2px 10px rgba(176,122,82,0.12); }
+
+  @media (max-width: 520px) {
+    .row-cover { width: 54px !important; height: 80px !important; }
+    .wrap { padding: 0 18px; }
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+
+    <header style="padding-top:72px; padding-bottom:8px; text-align:center;">
+      <div style="display:inline-block; line-height:0.86;">
+        <div style="font-family:'Fraunces',serif; font-weight:500; font-size:54px; color:#4A3B30; letter-spacing:-0.01em;">Katherine</div>
+        <div style="font-family:'Fraunces',serif; font-weight:600; font-style:italic; font-size:30px; color:#B07A52; margin-top:2px;">reads</div>
+      </div>
+      <div id="about" style="max-width:600px; margin:28px auto 0;"></div>
+    </header>
+
+    <div style="margin:28px auto 0; max-width:600px;">
+      <label for="search" style="position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0);">Search books by title or author</label>
+      <input id="search" class="search" type="search" autocomplete="off" placeholder="Search by title or author…">
+    </div>
+
+    <div style="text-align:center; padding:28px 0 8px; margin-top:8px;">
+      <p id="count" style="font-size:12px; letter-spacing:0.04em; text-transform:uppercase; color:#9C8E7E; margin:0;">Loading…</p>
+    </div>
+
+    <main id="list" style="padding-bottom:96px; margin-top:8px;"></main>
+
+    <footer style="border-top:1px solid #EAE2D4; padding:36px 0 64px; text-align:center;">
+      <div style="font-family:'Fraunces',serif; font-weight:500; font-size:18px; color:#4A3B30;">Katherine<span style="font-style:italic; color:#B07A52; font-size:14px;"> reads</span></div>
+      <p id="footer-note" style="font-size:13px; color:#9C8E7E; margin:12px 0 0;"></p>
+    </footer>
+
+  </div>
+
+<script>
+(function () {
+  "use strict";
+
+  var DEFAULT_HANDLE = "@katherinereads100";
+  var DEFAULT_IG = "https://www.instagram.com/katherinereads100/";
+
+  function esc(s) {
+    return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+
+  // Square tier chip — color by tier, neutral dashed slot when unranked.
+  function chipStyle(tier, colors) {
+    var base = "width:38px;height:38px;border-radius:8px;display:flex;align-items:center;" +
+      "justify-content:center;font-family:'Fraunces',serif;font-weight:600;font-size:18px;" +
+      "line-height:1;user-select:none;flex:none;";
+    var t = (tier || "").trim().toUpperCase();
+    if (!t) {
+      return base + "color:transparent;background:transparent;border:1.5px dashed #D7CDBC;box-shadow:none;";
+    }
+    var c = (colors && colors[t]) || "#7E8B6F";
+    return base + "color:#FFFFFF;background:" + c + ";box-shadow:0 2px 5px " + c + "55;";
+  }
+
+  // Split the about blurb into sentences and linkify the Instagram handle.
+  function aboutHTML(about, handle, instagram) {
+    if (!about) return "";
+    var sentences = about.match(/[^.!?]+[.!?]+(?:\s|$)/g) || [about];
+    return sentences.map(function (s) {
+      var text = s.trim();
+      var i = handle ? text.indexOf(handle) : -1;
+      var body;
+      if (i === -1) {
+        body = esc(text);
+      } else {
+        body = esc(text.slice(0, i)) +
+          '<a href="' + esc(instagram) + '" target="_blank" rel="noopener" ' +
+          'style="color:#B07A52; text-decoration:none; border-bottom:1px solid #B07A5255; font-weight:500;">' +
+          esc(handle) + "</a>" + esc(text.slice(i + handle.length));
+      }
+      return '<p style="font-size:16px; line-height:1.55; color:#4A3B30; opacity:0.92; margin:0 0 6px;">' + body + "</p>";
+    }).join("");
+  }
+
+  function rowHTML(b, colors) {
+    var t = (b.tier || "").trim().toUpperCase();
+    var tierTitle = t ? "Tier " + t : "Not yet ranked";
+    var alt = (b.title || "") + " by " + (b.author || "") + " cover";
+    var link = esc(b.amazon_link);
+    return '' +
+      '<div style="display:flex; gap:18px; align-items:flex-start; padding:22px 4px; border-top:1px solid #EAE2D4;">' +
+        '<div style="flex:none; width:30px; text-align:right; font-family:\'Fraunces\',serif; font-weight:500; font-size:22px; color:#C9A24B; line-height:1; padding-top:2px;">' + esc(b.rank) + '</div>' +
+
+        '<a href="' + link + '" target="_blank" rel="noopener" aria-label="' + esc(alt) + '" class="row-cover" style="flex:none; display:block; position:relative; width:62px; height:92px; border-radius:4px; overflow:hidden; background:#EFE7D8; box-shadow:0 2px 6px rgba(74,59,48,0.14);">' +
+          '<div style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; padding:6px; text-align:center; font-family:\'Fraunces\',serif; font-style:italic; font-size:11px; line-height:1.2; color:#A8987F;">' + esc(b.title) + '</div>' +
+          '<img src="' + esc(b.cover_url) + '" alt="' + esc(alt) + '" loading="lazy" onerror="this.style.display=\'none\'" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; background:#EFE7D8;">' +
+        '</a>' +
+
+        '<div style="flex:1; min-width:0;">' +
+          '<a href="' + link + '" target="_blank" rel="noopener" style="font-family:\'Fraunces\',serif; font-weight:500; font-size:18px; color:#4A3B30; text-decoration:none; line-height:1.25; display:inline-block;">' + esc(b.title) + '</a>' +
+          '<div style="font-size:14px; color:#8A7B6B; margin-top:2px;">' + esc(b.author) + '</div>' +
+          '<p style="font-size:14px; line-height:1.55; color:#5C4D40; margin:8px 0 0; text-wrap:pretty;">' + esc(b.description) + '</p>' +
+          '<a href="' + link + '" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:5px; margin-top:10px; font-size:12px; font-weight:500; letter-spacing:0.03em; text-transform:uppercase; color:#B07A52; text-decoration:none;">Find a copy <span style="font-size:14px;">→</span></a>' +
+        '</div>' +
+
+        '<div style="flex:none; padding-top:2px;">' +
+          '<div title="' + esc(tierTitle) + '" style="' + chipStyle(b.tier, colors) + '">' + esc(t) + '</div>' +
+        '</div>' +
+      '</div>';
+  }
+
+  var state = { data: null, query: "" };
+
+  function render() {
+    var data = state.data;
+    var site = (data && data.site) || {};
+    var colors = (data && data.tiers && data.tiers.colors) || {};
+    var all = (data && data.books) || [];
+    var handle = site.handle || DEFAULT_HANDLE;
+    var instagram = site.instagram || DEFAULT_IG;
+    var q = state.query.trim().toLowerCase();
+
+    var filtered = q
+      ? all.filter(function (b) {
+          return (b.title || "").toLowerCase().indexOf(q) !== -1 ||
+                 (b.author || "").toLowerCase().indexOf(q) !== -1;
+        })
+      : all;
+
+    // About blurb
+    document.getElementById("about").innerHTML = aboutHTML(site.about, handle, instagram);
+
+    // Count label
+    var total = all.length;
+    var countEl = document.getElementById("count");
+    if (!data) {
+      countEl.textContent = "Loading…";
+    } else if (q) {
+      countEl.textContent = filtered.length + (filtered.length === 1 ? " book" : " books") + " of " + total;
+    } else {
+      countEl.textContent = total + " books · numbers are list order, not rank · the tier grade is the score";
+    }
+
+    // List
+    var listEl = document.getElementById("list");
+    if (data && q && filtered.length === 0) {
+      listEl.innerHTML = '<p style="text-align:center; color:#9C8E7E; font-size:15px; padding:48px 0;">No books match “' + esc(state.query.trim()) + '”.</p>';
+    } else {
+      listEl.innerHTML = filtered.map(function (b) { return rowHTML(b, colors); }).join("");
+    }
+
+    // Footer
+    document.getElementById("footer-note").innerHTML =
+      'More reviews on Instagram — <a href="' + esc(instagram) + '" target="_blank" rel="noopener" style="color:#B07A52; text-decoration:none; border-bottom:1px solid #B07A5255;">' + esc(handle) + '</a>';
+  }
+
+  document.getElementById("search").addEventListener("input", function (e) {
+    state.query = e.target.value;
+    render();
+  });
+
+  render(); // initial (loading) paint
+
+  fetch("books.json", { cache: "no-cache" })
+    .then(function (r) { return r.json(); })
+    .then(function (data) { state.data = data; render(); })
+    .catch(function () {
+      state.data = { site: {}, tiers: { colors: {} }, books: [] };
+      document.getElementById("count").textContent = "Couldn’t load the book list.";
+    });
+})();
+</script>
+</body>
+</html>
