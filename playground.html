@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Katherine Reads — Playground (not live)</title>
+<meta name="description" content="Design sandbox for Katherine Reads — not the live site.">
+<meta name="theme-color" content="#FBF7F0">
+
+<!-- Open Graph / social sharing -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Katherine Reads — The 100 Greatest Books of All Time">
+<meta property="og:description" content="A running list of the 100 greatest books of all time, ranked. Tier grades, one-line takes, and links to grab a copy.">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23FBF7F0'/%3E%3Ctext x='50' y='72' font-family='Georgia,serif' font-size='64' font-weight='600' text-anchor='middle' fill='%23B07A52'%3EK%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<!-- Book data. Loaded as a script so the list works everywhere — over HTTP and when the file is opened directly. -->
+<script src="books.js"></script>
+
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: #FBF7F0;
+    color: #4A3B30;
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+  }
+  a:focus-visible, input:focus-visible, button:focus-visible {
+    outline: 2px solid #B07A52;
+    outline-offset: 3px;
+    border-radius: 3px;
+  }
+  ::selection { background: #C9A24B40; }
+
+  .wrap { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+
+  /* Balance the intro lines so sentences don't leave orphan words (esp. on mobile). */
+  .about-line { text-wrap: balance; }
+
+  /* Book descriptions hidden for now — kept in the DOM (and in books.js) and
+     still occupying their space, so each row's height is unchanged.
+     To show descriptions again, change this to `visibility: visible;` or delete the rule. */
+  .book-desc { visibility: hidden; }
+
+  /* Filter pills (grade) + sort toggle */
+  .fpill {
+    display:inline-flex; align-items:center; justify-content:center;
+    height:34px; min-width:34px; border-radius:999px; cursor:pointer;
+    border:1.5px solid transparent; background:none; line-height:1;
+    transition:transform .12s ease, box-shadow .12s ease;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .fpill:hover { transform:translateY(-1px); }
+  .fpill.sel { box-shadow:0 0 0 2px #FBF7F0, 0 0 0 4px #4A3B30; transform:translateY(-1px); }
+  .sortbtn {
+    background:none; border:none; cursor:pointer;
+    font-family:'Inter',system-ui,sans-serif; font-size:12px;
+    color:#9C8E7E; padding:5px 4px; margin:0 2px;
+    border-bottom:2px solid transparent;
+  }
+  .sortbtn.sel { color:#B07A52; font-weight:600; border-bottom-color:#B07A52; }
+  .sortbtn:hover { color:#B07A52; }
+
+  @media (max-width: 520px) {
+    .row-cover { width: 54px !important; height: 80px !important; }
+    .wrap { padding: 0 18px; }
+    /* Descriptions are hidden, so collapse their reserved space on mobile and
+       tighten the rows for a more compact list. */
+    .book-desc { display: none; }
+    #list > div { padding-top: 16px !important; padding-bottom: 16px !important; }
+  }
+</style>
+</head>
+<body>
+  <div style="position:fixed; top:10px; right:10px; z-index:9999; background:#B07A52; color:#fff; font:600 11px/1 'Inter',system-ui,sans-serif; letter-spacing:0.08em; text-transform:uppercase; padding:7px 11px; border-radius:999px; box-shadow:0 2px 8px rgba(74,59,48,0.28); pointer-events:none;">Playground · not live</div>
+  <div class="wrap">
+
+    <header style="padding-top:72px; padding-bottom:8px; text-align:center;">
+      <div style="display:inline-block; line-height:0.86;">
+        <div style="font-family:'Fraunces',serif; font-weight:500; font-size:54px; color:#4A3B30; letter-spacing:-0.01em;">Katherine</div>
+        <div style="font-family:'Fraunces',serif; font-weight:600; font-style:italic; font-size:30px; color:#B07A52; margin-top:2px;">reads</div>
+      </div>
+      <div id="about" style="max-width:600px; margin:28px auto 0;"></div>
+    </header>
+
+    <div id="controls" style="max-width:600px; margin:36px auto 0;">
+      <div style="text-align:center; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:#9C8E7E; margin-bottom:11px;">Filter by Katherine's grade</div>
+      <div id="filters" style="display:flex; flex-wrap:wrap; gap:7px; justify-content:center;"></div>
+      <div style="text-align:center; margin-top:18px;">
+        <span style="font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:#9C8E7E; margin-right:8px; vertical-align:middle;">Sort</span>
+        <button type="button" class="sortbtn sel" data-sort="list">List order</button>
+        <button type="button" class="sortbtn" data-sort="grade">By grade</button>
+      </div>
+    </div>
+
+    <div style="text-align:center; padding:28px 0 8px; margin-top:8px;">
+      <p id="count" style="font-size:12px; letter-spacing:0.04em; text-transform:uppercase; color:#9C8E7E; margin:0;">Loading…</p>
+    </div>
+
+    <main id="list" style="padding-bottom:96px; margin-top:8px;"></main>
+
+    <footer style="border-top:1px solid #EAE2D4; padding:36px 0 64px; text-align:center;">
+      <div style="font-family:'Fraunces',serif; font-weight:500; font-size:18px; color:#4A3B30;">Katherine<span style="font-style:italic; color:#B07A52; font-size:14px;"> reads</span></div>
+      <p id="footer-note" style="font-size:13px; color:#9C8E7E; margin:12px 0 0;"></p>
+    </footer>
+
+  </div>
+
+<script>
+(function () {
+  "use strict";
+
+  var DEFAULT_HANDLE = "@katherinereads100";
+  var DEFAULT_IG = "https://www.instagram.com/katherinereads100/";
+
+  function esc(s) {
+    return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+
+  // Grade ordering for "sort by grade" (best to worst; unranked last).
+  var TIER_ORDER = { S: 0, A: 1, B: 2, C: 3, D: 4, E: 5, F: 6 };
+  function gradeIndex(b) {
+    var t = (b.tier || "").trim().toUpperCase();
+    return (t in TIER_ORDER) ? TIER_ORDER[t] : 7;
+  }
+
+  // Square tier chip — color by tier, neutral dashed slot when unranked.
+  function chipStyle(tier, colors) {
+    var base = "width:38px;height:38px;border-radius:8px;display:flex;align-items:center;" +
+      "justify-content:center;font-family:'Fraunces',serif;font-weight:600;font-size:18px;" +
+      "line-height:1;user-select:none;flex:none;";
+    var t = (tier || "").trim().toUpperCase();
+    if (!t) {
+      return base + "color:transparent;background:transparent;border:1.5px dashed #D7CDBC;box-shadow:none;";
+    }
+    var c = (colors && colors[t]) || "#7E8B6F";
+    return base + "color:#FFFFFF;background:" + c + ";box-shadow:0 2px 5px " + c + "55;";
+  }
+
+  // Split the about blurb into sentences and linkify the Instagram handle.
+  function aboutHTML(about, handle, instagram) {
+    if (!about) return "";
+    var sentences = about.match(/[^.!?]+[.!?]+(?:\s|$)/g) || [about];
+    return sentences.map(function (s) {
+      var text = s.trim();
+      var i = handle ? text.indexOf(handle) : -1;
+      var body;
+      if (i === -1) {
+        body = esc(text);
+      } else {
+        body = esc(text.slice(0, i)) +
+          '<a href="' + esc(instagram) + '" target="_blank" rel="noopener" ' +
+          'style="color:#B07A52; text-decoration:none; border-bottom:1px solid #B07A5255; font-weight:500;">' +
+          esc(handle) + "</a>" + esc(text.slice(i + handle.length));
+      }
+      return '<p class="about-line" style="font-size:16px; line-height:1.55; color:#4A3B30; opacity:0.92; margin:0 0 6px;">' + body + "</p>";
+    }).join("");
+  }
+
+  function rowHTML(b, colors) {
+    var t = (b.tier || "").trim().toUpperCase();
+    var tierTitle = t ? "Tier " + t : "Not yet ranked";
+    var alt = (b.title || "") + " by " + (b.author || "") + " cover";
+    var link = esc(b.amazon_link);
+    return '' +
+      '<div style="display:flex; gap:18px; align-items:flex-start; padding:22px 4px; border-top:1px solid #EAE2D4;">' +
+        '<div style="flex:none; width:30px; text-align:right; font-family:\'Fraunces\',serif; font-weight:500; font-size:22px; color:#C9A24B; line-height:1; padding-top:2px;">' + esc(b.rank) + '</div>' +
+
+        '<a href="' + link + '" target="_blank" rel="noopener" aria-label="' + esc(alt) + '" class="row-cover" style="flex:none; display:block; position:relative; width:62px; height:92px; border-radius:4px; overflow:hidden; background:#EFE7D8; box-shadow:0 2px 6px rgba(74,59,48,0.14);">' +
+          '<div style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; padding:6px; text-align:center; font-family:\'Fraunces\',serif; font-style:italic; font-size:11px; line-height:1.2; color:#A8987F;">' + esc(b.title) + '</div>' +
+          '<img src="' + esc(b.cover_url) + '" alt="' + esc(alt) + '" loading="lazy" onerror="this.style.display=\'none\'" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; background:#EFE7D8;">' +
+        '</a>' +
+
+        '<div style="flex:1; min-width:0;">' +
+          '<a href="' + link + '" target="_blank" rel="noopener" style="font-family:\'Fraunces\',serif; font-weight:500; font-size:18px; color:#4A3B30; text-decoration:none; line-height:1.25; display:inline-block;">' + esc(b.title) + '</a>' +
+          '<div style="font-size:14px; color:#8A7B6B; margin-top:2px;">' + esc(b.author) + '</div>' +
+          '<p class="book-desc" style="font-size:14px; line-height:1.55; color:#5C4D40; margin:8px 0 0; text-wrap:pretty;">' + esc(b.description) + '</p>' +
+          '<a href="' + link + '" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:5px; margin-top:10px; font-size:12px; font-weight:500; letter-spacing:0.03em; text-transform:uppercase; color:#B07A52; text-decoration:none;">Find a copy <span style="font-size:14px;">→</span></a>' +
+        '</div>' +
+
+        '<div style="flex:none; padding-top:2px;">' +
+          '<div title="' + esc(tierTitle) + '" style="' + chipStyle(b.tier, colors) + '">' + esc(t) + '</div>' +
+        '</div>' +
+      '</div>';
+  }
+
+  var state = { data: null, tier: "all", sort: "list" };
+
+  function render() {
+    var data = state.data;
+    var site = (data && data.site) || {};
+    var colors = (data && data.tiers && data.tiers.colors) || {};
+    var all = (data && data.books) || [];
+    var handle = site.handle || DEFAULT_HANDLE;
+    var instagram = site.instagram || DEFAULT_IG;
+    var tier = state.tier;
+
+    var filtered = all.filter(function (b) {
+      if (tier !== "all") {
+        var bt = (b.tier || "").trim().toUpperCase();
+        if (tier === "unranked") { if (bt) return false; }
+        else if (bt !== tier) return false;
+      }
+      return true;
+    });
+
+    if (state.sort === "grade") {
+      filtered = filtered.slice().sort(function (a, b) {
+        return (gradeIndex(a) - gradeIndex(b)) || (a.rank - b.rank);
+      });
+    } else {
+      filtered = filtered.slice().sort(function (a, b) { return a.rank - b.rank; });
+    }
+
+    // About blurb
+    document.getElementById("about").innerHTML = aboutHTML(site.about, handle, instagram);
+
+    // Sync control active states
+    var fpills = document.querySelectorAll("#filters .fpill");
+    for (var fi = 0; fi < fpills.length; fi++) {
+      var on = fpills[fi].getAttribute("data-k") === tier;
+      fpills[fi].classList.toggle("sel", on);
+      fpills[fi].setAttribute("aria-pressed", on ? "true" : "false");
+    }
+    var sbtns = document.querySelectorAll(".sortbtn");
+    for (var si = 0; si < sbtns.length; si++) {
+      sbtns[si].classList.toggle("sel", sbtns[si].getAttribute("data-sort") === state.sort);
+    }
+
+    // Count label
+    var total = all.length;
+    var shown = filtered.length;
+    var countEl = document.getElementById("count");
+    if (!data) {
+      countEl.textContent = "Loading…";
+    } else if (tier === "all") {
+      countEl.textContent = total + " books · numbers are list order, not rank · the tier grade is the score";
+    } else {
+      var bits = shown + (shown === 1 ? " book" : " books");
+      bits += " · " + (tier === "unranked" ? "unranked" : "grade " + tier);
+      countEl.textContent = bits;
+    }
+
+    // List
+    var listEl = document.getElementById("list");
+    if (data && shown === 0) {
+      listEl.innerHTML = '<p style="text-align:center; color:#9C8E7E; font-size:15px; padding:48px 0;">No books match these filters.</p>';
+    } else {
+      listEl.innerHTML = filtered.map(function (b) { return rowHTML(b, colors); }).join("");
+    }
+
+    // Footer
+    document.getElementById("footer-note").innerHTML =
+      'More reviews on Instagram — <a href="' + esc(instagram) + '" target="_blank" rel="noopener" style="color:#B07A52; text-decoration:none; border-bottom:1px solid #B07A5255;">' + esc(handle) + '</a>';
+  }
+
+  // Build the grade filter pills (colors come from the data).
+  function buildFilters(colors) {
+    var el = document.getElementById("filters");
+    if (!el) return;
+    el.innerHTML = "";
+    var opts = [{ k: "all", l: "All" }];
+    ["S", "A", "B", "C", "D", "E", "F"].forEach(function (t) {
+      opts.push({ k: t, l: t, tier: true, color: (colors && colors[t]) || "#7E8B6F" });
+    });
+    opts.push({ k: "unranked", l: "Unranked", dashed: true });
+    opts.forEach(function (o) {
+      var b = document.createElement("button");
+      b.type = "button";
+      b.className = "fpill";
+      b.setAttribute("data-k", o.k);
+      if (o.tier) {
+        b.style.cssText = "width:34px;font-family:'Fraunces',serif;font-size:17px;font-weight:600;color:#fff;background:" + o.color + ";";
+        b.textContent = o.l;
+        b.setAttribute("aria-label", "Grade " + o.l);
+      } else if (o.dashed) {
+        b.style.cssText = "padding:0 14px;font-family:'Inter',system-ui,sans-serif;font-size:13px;color:#9C8E7E;background:transparent;border:1.5px dashed #D7CDBC;";
+        b.textContent = o.l;
+      } else {
+        b.style.cssText = "padding:0 16px;font-family:'Inter',system-ui,sans-serif;font-size:13px;font-weight:600;color:#4A3B30;background:#F1EADD;";
+        b.textContent = o.l;
+      }
+      b.addEventListener("click", function () { state.tier = o.k; render(); });
+      el.appendChild(b);
+    });
+  }
+
+  var sortBtns = document.querySelectorAll(".sortbtn");
+  for (var sb = 0; sb < sortBtns.length; sb++) {
+    sortBtns[sb].addEventListener("click", function (e) {
+      state.sort = e.currentTarget.getAttribute("data-sort");
+      // Sorting by grade shows the whole list ranked S→F, so clear any grade filter.
+      if (state.sort === "grade") state.tier = "all";
+      render();
+    });
+  }
+
+  render(); // initial (loading) paint
+
+  function start(data) {
+    state.data = data;
+    buildFilters((data.tiers && data.tiers.colors) || {});
+    render();
+  }
+
+  // Primary source: data loaded via <script src="books.js">. Works over HTTP and file://.
+  if (window.KATHERINE_DATA) {
+    start(window.KATHERINE_DATA);
+  } else {
+    // Fallback: fetch books.json (only works when served over HTTP).
+    fetch("books.json", { cache: "no-cache" })
+      .then(function (r) { return r.json(); })
+      .then(function (data) { start(data); })
+      .catch(function () {
+        state.data = { site: {}, tiers: { colors: {} }, books: [] };
+        document.getElementById("count").textContent = "Couldn’t load the book list.";
+      });
+  }
+})();
+</script>
+</body>
+</html>
