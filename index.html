@@ -18,6 +18,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
+<!-- Book data. Loaded as a script so the list works everywhere — over HTTP and when the file is opened directly. -->
+<script src="books.js"></script>
+
 <style>
   * { box-sizing: border-box; }
   html, body { margin: 0; padding: 0; }
@@ -216,13 +219,20 @@
 
   render(); // initial (loading) paint
 
-  fetch("books.json", { cache: "no-cache" })
-    .then(function (r) { return r.json(); })
-    .then(function (data) { state.data = data; render(); })
-    .catch(function () {
-      state.data = { site: {}, tiers: { colors: {} }, books: [] };
-      document.getElementById("count").textContent = "Couldn’t load the book list.";
-    });
+  // Primary source: data loaded via <script src="books.js">. Works over HTTP and file://.
+  if (window.KATHERINE_DATA) {
+    state.data = window.KATHERINE_DATA;
+    render();
+  } else {
+    // Fallback: fetch books.json (only works when served over HTTP).
+    fetch("books.json", { cache: "no-cache" })
+      .then(function (r) { return r.json(); })
+      .then(function (data) { state.data = data; render(); })
+      .catch(function () {
+        state.data = { site: {}, tiers: { colors: {} }, books: [] };
+        document.getElementById("count").textContent = "Couldn’t load the book list.";
+      });
+  }
 })();
 </script>
 </body>

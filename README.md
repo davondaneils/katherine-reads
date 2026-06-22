@@ -5,14 +5,17 @@ A single-page site listing the 100 greatest books of all time, ranked — each w
 ## Files
 
 - `index.html` — the whole site (HTML + CSS + a little vanilla JS).
-- `books.json` — the data. **This is the only file you normally edit.**
+- `books.js` — the data. **This is the only file you normally edit.**
 - `covers/` — locally-hosted cover images (everything else loads covers from Open Library).
 
 ## Editing the list
 
-Open `books.json` and edit the `books` array. Each entry:
+Open `books.js` and edit the `books` array. The file is just the data wrapped in
+`window.KATHERINE_DATA = { … };` — keep that wrapper, and edit the entries inside.
+(It's stored as `.js` rather than `.json` so the list also loads when you open
+`index.html` directly from disk, not only when served over HTTP.) Each entry:
 
-```json
+```js
 {
   "rank": 1,
   "title": "Nineteen Eighty-Four",
