@@ -40,25 +40,6 @@
 
   .wrap { max-width: 860px; margin: 0 auto; padding: 0 24px; }
 
-  /* Search */
-  .search {
-    width: 100%;
-    max-width: 360px;
-    margin: 0 auto;
-    display: block;
-    font-family: 'Inter', system-ui, sans-serif;
-    font-size: 15px;
-    color: #4A3B30;
-    background: #FFFDF9;
-    border: 1px solid #EAE2D4;
-    border-radius: 999px;
-    padding: 11px 18px;
-    text-align: center;
-    transition: border-color 0.15s ease, box-shadow 0.15s ease;
-  }
-  .search::placeholder { color: #A8987F; }
-  .search:focus { border-color: #B07A52; box-shadow: 0 2px 10px rgba(176,122,82,0.12); }
-
   /* Filter pills (grade) + sort toggle */
   .fpill {
     display:inline-flex; align-items:center; justify-content:center;
@@ -95,12 +76,7 @@
       <div id="about" style="max-width:600px; margin:28px auto 0;"></div>
     </header>
 
-    <div style="margin:28px auto 0; max-width:600px;">
-      <label for="search" style="position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0);">Search books by title or author</label>
-      <input id="search" class="search" type="search" autocomplete="off" placeholder="Search by title or author…">
-    </div>
-
-    <div id="controls" style="max-width:600px; margin:22px auto 0;">
+    <div id="controls" style="max-width:600px; margin:36px auto 0;">
       <div style="text-align:center; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:#9C8E7E; margin-bottom:11px;">Filter by Katherine's grade</div>
       <div id="filters" style="display:flex; flex-wrap:wrap; gap:7px; justify-content:center;"></div>
       <div style="text-align:center; margin-top:18px;">
@@ -203,7 +179,7 @@
       '</div>';
   }
 
-  var state = { data: null, query: "", tier: "all", sort: "list" };
+  var state = { data: null, tier: "all", sort: "list" };
 
   function render() {
     var data = state.data;
@@ -212,13 +188,9 @@
     var all = (data && data.books) || [];
     var handle = site.handle || DEFAULT_HANDLE;
     var instagram = site.instagram || DEFAULT_IG;
-    var q = state.query.trim().toLowerCase();
     var tier = state.tier;
 
     var filtered = all.filter(function (b) {
-      if (q &&
-          (b.title || "").toLowerCase().indexOf(q) === -1 &&
-          (b.author || "").toLowerCase().indexOf(q) === -1) return false;
       if (tier !== "all") {
         var bt = (b.tier || "").trim().toUpperCase();
         if (tier === "unranked") { if (bt) return false; }
@@ -256,12 +228,11 @@
     var countEl = document.getElementById("count");
     if (!data) {
       countEl.textContent = "Loading…";
-    } else if (tier === "all" && !q) {
+    } else if (tier === "all") {
       countEl.textContent = total + " books · numbers are list order, not rank · the tier grade is the score";
     } else {
       var bits = shown + (shown === 1 ? " book" : " books");
-      if (tier !== "all") bits += " · " + (tier === "unranked" ? "unranked" : "grade " + tier);
-      if (q) bits += " · “" + state.query.trim() + "”";
+      bits += " · " + (tier === "unranked" ? "unranked" : "grade " + tier);
       countEl.textContent = bits;
     }
 
@@ -308,11 +279,6 @@
       el.appendChild(b);
     });
   }
-
-  document.getElementById("search").addEventListener("input", function (e) {
-    state.query = e.target.value;
-    render();
-  });
 
   var sortBtns = document.querySelectorAll(".sortbtn");
   for (var sb = 0; sb < sortBtns.length; sb++) {
