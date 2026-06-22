@@ -284,6 +284,8 @@
   for (var sb = 0; sb < sortBtns.length; sb++) {
     sortBtns[sb].addEventListener("click", function (e) {
       state.sort = e.currentTarget.getAttribute("data-sort");
+      // Sorting by grade shows the whole list ranked S→F, so clear any grade filter.
+      if (state.sort === "grade") state.tier = "all";
       render();
     });
   }
