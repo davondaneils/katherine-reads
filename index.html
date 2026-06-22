@@ -40,6 +40,11 @@
 
   .wrap { max-width: 860px; margin: 0 auto; padding: 0 24px; }
 
+  /* Book descriptions hidden for now — kept in the DOM (and in books.js) and
+     still occupying their space, so each row's height is unchanged.
+     To show descriptions again, change this to `visibility: visible;` or delete the rule. */
+  .book-desc { visibility: hidden; }
+
   /* Filter pills (grade) + sort toggle */
   .fpill {
     display:inline-flex; align-items:center; justify-content:center;
@@ -169,7 +174,7 @@
         '<div style="flex:1; min-width:0;">' +
           '<a href="' + link + '" target="_blank" rel="noopener" style="font-family:\'Fraunces\',serif; font-weight:500; font-size:18px; color:#4A3B30; text-decoration:none; line-height:1.25; display:inline-block;">' + esc(b.title) + '</a>' +
           '<div style="font-size:14px; color:#8A7B6B; margin-top:2px;">' + esc(b.author) + '</div>' +
-          '<p style="font-size:14px; line-height:1.55; color:#5C4D40; margin:8px 0 0; text-wrap:pretty;">' + esc(b.description) + '</p>' +
+          '<p class="book-desc" style="font-size:14px; line-height:1.55; color:#5C4D40; margin:8px 0 0; text-wrap:pretty;">' + esc(b.description) + '</p>' +
           '<a href="' + link + '" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:5px; margin-top:10px; font-size:12px; font-weight:500; letter-spacing:0.03em; text-transform:uppercase; color:#B07A52; text-decoration:none;">Find a copy <span style="font-size:14px;">→</span></a>' +
         '</div>' +
 
