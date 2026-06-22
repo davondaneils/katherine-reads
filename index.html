@@ -59,6 +59,25 @@
   .search::placeholder { color: #A8987F; }
   .search:focus { border-color: #B07A52; box-shadow: 0 2px 10px rgba(176,122,82,0.12); }
 
+  /* Filter pills (grade) + sort toggle */
+  .fpill {
+    display:inline-flex; align-items:center; justify-content:center;
+    height:34px; min-width:34px; border-radius:999px; cursor:pointer;
+    border:1.5px solid transparent; background:none; line-height:1;
+    transition:transform .12s ease, box-shadow .12s ease;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .fpill:hover { transform:translateY(-1px); }
+  .fpill.sel { box-shadow:0 0 0 2px #FBF7F0, 0 0 0 4px #4A3B30; transform:translateY(-1px); }
+  .sortbtn {
+    background:none; border:none; cursor:pointer;
+    font-family:'Inter',system-ui,sans-serif; font-size:12px;
+    color:#9C8E7E; padding:5px 4px; margin:0 2px;
+    border-bottom:2px solid transparent;
+  }
+  .sortbtn.sel { color:#B07A52; font-weight:600; border-bottom-color:#B07A52; }
+  .sortbtn:hover { color:#B07A52; }
+
   @media (max-width: 520px) {
     .row-cover { width: 54px !important; height: 80px !important; }
     .wrap { padding: 0 18px; }
@@ -79,6 +98,16 @@
     <div style="margin:28px auto 0; max-width:600px;">
       <label for="search" style="position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0);">Search books by title or author</label>
       <input id="search" class="search" type="search" autocomplete="off" placeholder="Search by title or author…">
+    </div>
+
+    <div id="controls" style="max-width:600px; margin:22px auto 0;">
+      <div style="text-align:center; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:#9C8E7E; margin-bottom:11px;">Filter by Katherine's grade</div>
+      <div id="filters" style="display:flex; flex-wrap:wrap; gap:7px; justify-content:center;"></div>
+      <div style="text-align:center; margin-top:18px;">
+        <span style="font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:#9C8E7E; margin-right:8px; vertical-align:middle;">Sort</span>
+        <button type="button" class="sortbtn sel" data-sort="list">List order</button>
+        <button type="button" class="sortbtn" data-sort="grade">By grade</button>
+      </div>
     </div>
 
     <div style="text-align:center; padding:28px 0 8px; margin-top:8px;">
@@ -105,6 +134,13 @@
     return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
       return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
     });
+  }
+
+  // Grade ordering for "sort by grade" (best to worst; unranked last).
+  var TIER_ORDER = { S: 0, A: 1, B: 2, C: 3, D: 4, E: 5, F: 6 };
+  function gradeIndex(b) {
+    var t = (b.tier || "").trim().toUpperCase();
+    return (t in TIER_ORDER) ? TIER_ORDER[t] : 7;
   }
 
   // Square tier chip — color by tier, neutral dashed slot when unranked.
@@ -167,7 +203,7 @@
       '</div>';
   }
 
-  var state = { data: null, query: "" };
+  var state = { data: null, query: "", tier: "all", sort: "list" };
 
   function render() {
     var data = state.data;
@@ -177,32 +213,62 @@
     var handle = site.handle || DEFAULT_HANDLE;
     var instagram = site.instagram || DEFAULT_IG;
     var q = state.query.trim().toLowerCase();
+    var tier = state.tier;
 
-    var filtered = q
-      ? all.filter(function (b) {
-          return (b.title || "").toLowerCase().indexOf(q) !== -1 ||
-                 (b.author || "").toLowerCase().indexOf(q) !== -1;
-        })
-      : all;
+    var filtered = all.filter(function (b) {
+      if (q &&
+          (b.title || "").toLowerCase().indexOf(q) === -1 &&
+          (b.author || "").toLowerCase().indexOf(q) === -1) return false;
+      if (tier !== "all") {
+        var bt = (b.tier || "").trim().toUpperCase();
+        if (tier === "unranked") { if (bt) return false; }
+        else if (bt !== tier) return false;
+      }
+      return true;
+    });
+
+    if (state.sort === "grade") {
+      filtered = filtered.slice().sort(function (a, b) {
+        return (gradeIndex(a) - gradeIndex(b)) || (a.rank - b.rank);
+      });
+    } else {
+      filtered = filtered.slice().sort(function (a, b) { return a.rank - b.rank; });
+    }
 
     // About blurb
     document.getElementById("about").innerHTML = aboutHTML(site.about, handle, instagram);
 
+    // Sync control active states
+    var fpills = document.querySelectorAll("#filters .fpill");
+    for (var fi = 0; fi < fpills.length; fi++) {
+      var on = fpills[fi].getAttribute("data-k") === tier;
+      fpills[fi].classList.toggle("sel", on);
+      fpills[fi].setAttribute("aria-pressed", on ? "true" : "false");
+    }
+    var sbtns = document.querySelectorAll(".sortbtn");
+    for (var si = 0; si < sbtns.length; si++) {
+      sbtns[si].classList.toggle("sel", sbtns[si].getAttribute("data-sort") === state.sort);
+    }
+
     // Count label
     var total = all.length;
+    var shown = filtered.length;
     var countEl = document.getElementById("count");
     if (!data) {
       countEl.textContent = "Loading…";
-    } else if (q) {
-      countEl.textContent = filtered.length + (filtered.length === 1 ? " book" : " books") + " of " + total;
-    } else {
+    } else if (tier === "all" && !q) {
       countEl.textContent = total + " books · numbers are list order, not rank · the tier grade is the score";
+    } else {
+      var bits = shown + (shown === 1 ? " book" : " books");
+      if (tier !== "all") bits += " · " + (tier === "unranked" ? "unranked" : "grade " + tier);
+      if (q) bits += " · “" + state.query.trim() + "”";
+      countEl.textContent = bits;
     }
 
     // List
     var listEl = document.getElementById("list");
-    if (data && q && filtered.length === 0) {
-      listEl.innerHTML = '<p style="text-align:center; color:#9C8E7E; font-size:15px; padding:48px 0;">No books match “' + esc(state.query.trim()) + '”.</p>';
+    if (data && shown === 0) {
+      listEl.innerHTML = '<p style="text-align:center; color:#9C8E7E; font-size:15px; padding:48px 0;">No books match these filters.</p>';
     } else {
       listEl.innerHTML = filtered.map(function (b) { return rowHTML(b, colors); }).join("");
     }
@@ -212,22 +278,66 @@
       'More reviews on Instagram — <a href="' + esc(instagram) + '" target="_blank" rel="noopener" style="color:#B07A52; text-decoration:none; border-bottom:1px solid #B07A5255;">' + esc(handle) + '</a>';
   }
 
+  // Build the grade filter pills (colors come from the data).
+  function buildFilters(colors) {
+    var el = document.getElementById("filters");
+    if (!el) return;
+    el.innerHTML = "";
+    var opts = [{ k: "all", l: "All" }];
+    ["S", "A", "B", "C", "D", "E", "F"].forEach(function (t) {
+      opts.push({ k: t, l: t, tier: true, color: (colors && colors[t]) || "#7E8B6F" });
+    });
+    opts.push({ k: "unranked", l: "Unranked", dashed: true });
+    opts.forEach(function (o) {
+      var b = document.createElement("button");
+      b.type = "button";
+      b.className = "fpill";
+      b.setAttribute("data-k", o.k);
+      if (o.tier) {
+        b.style.cssText = "width:34px;font-family:'Fraunces',serif;font-size:17px;font-weight:600;color:#fff;background:" + o.color + ";";
+        b.textContent = o.l;
+        b.setAttribute("aria-label", "Grade " + o.l);
+      } else if (o.dashed) {
+        b.style.cssText = "padding:0 14px;font-family:'Inter',system-ui,sans-serif;font-size:13px;color:#9C8E7E;background:transparent;border:1.5px dashed #D7CDBC;";
+        b.textContent = o.l;
+      } else {
+        b.style.cssText = "padding:0 16px;font-family:'Inter',system-ui,sans-serif;font-size:13px;font-weight:600;color:#4A3B30;background:#F1EADD;";
+        b.textContent = o.l;
+      }
+      b.addEventListener("click", function () { state.tier = o.k; render(); });
+      el.appendChild(b);
+    });
+  }
+
   document.getElementById("search").addEventListener("input", function (e) {
     state.query = e.target.value;
     render();
   });
 
+  var sortBtns = document.querySelectorAll(".sortbtn");
+  for (var sb = 0; sb < sortBtns.length; sb++) {
+    sortBtns[sb].addEventListener("click", function (e) {
+      state.sort = e.currentTarget.getAttribute("data-sort");
+      render();
+    });
+  }
+
   render(); // initial (loading) paint
+
+  function start(data) {
+    state.data = data;
+    buildFilters((data.tiers && data.tiers.colors) || {});
+    render();
+  }
 
   // Primary source: data loaded via <script src="books.js">. Works over HTTP and file://.
   if (window.KATHERINE_DATA) {
-    state.data = window.KATHERINE_DATA;
-    render();
+    start(window.KATHERINE_DATA);
   } else {
     // Fallback: fetch books.json (only works when served over HTTP).
     fetch("books.json", { cache: "no-cache" })
       .then(function (r) { return r.json(); })
-      .then(function (data) { state.data = data; render(); })
+      .then(function (data) { start(data); })
       .catch(function () {
         state.data = { site: {}, tiers: { colors: {} }, books: [] };
         document.getElementById("count").textContent = "Couldn’t load the book list.";
