@@ -40,6 +40,9 @@
 
   .wrap { max-width: 860px; margin: 0 auto; padding: 0 24px; }
 
+  /* Balance the intro lines so sentences don't leave orphan words (esp. on mobile). */
+  .about-line { text-wrap: balance; }
+
   /* Book descriptions hidden for now — kept in the DOM (and in books.js) and
      still occupying their space, so each row's height is unchanged.
      To show descriptions again, change this to `visibility: visible;` or delete the rule. */
@@ -157,7 +160,7 @@
           'style="color:#B07A52; text-decoration:none; border-bottom:1px solid #B07A5255; font-weight:500;">' +
           esc(handle) + "</a>" + esc(text.slice(i + handle.length));
       }
-      return '<p style="font-size:16px; line-height:1.55; color:#4A3B30; opacity:0.92; margin:0 0 6px;">' + body + "</p>";
+      return '<p class="about-line" style="font-size:16px; line-height:1.55; color:#4A3B30; opacity:0.92; margin:0 0 6px;">' + body + "</p>";
     }).join("");
   }
 
