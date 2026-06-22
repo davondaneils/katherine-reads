@@ -6,7 +6,7 @@ A single-page site listing the 100 greatest books of all time, ranked — each w
 
 - `index.html` — the whole site (HTML + CSS + a little vanilla JS).
 - `books.js` — the data. **This is the only file you normally edit.**
-- `covers/` — locally-hosted cover images (everything else loads covers from Open Library).
+- `vercel.json` — tells Vercel never to cache `books.js`, so your edits go live immediately.
 
 ## Editing the list
 
@@ -28,7 +28,7 @@ Open `books.js` and edit the `books` array. The file is just the data wrapped in
 ```
 
 - **Tier grade** — set `"tier"` to `S`, `A`, `B`, `C`, `D`, `E`, or `F`. Leave it `""` for an unranked book (shows a neutral dashed slot).
-- **Cover** — point `cover_url` at any image URL, or drop a file in `covers/` and reference it (e.g. `covers/dune.jpg`).
+- **Cover** — covers are served from the Penguin Random House cover CDN: `https://images.penguinrandomhouse.com/cover/<isbn>`. To change one, swap the ISBN in the URL (use the ISBN of the Penguin/PRH edition you want). You can also point `cover_url` at any other image URL.
 - **Buy link** — `amazon_link` is currently an Amazon search URL. Swap for exact product or affiliate links later.
 
 If the repo is connected to Vercel, every push to `main` redeploys automatically.

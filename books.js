@@ -18,7 +18,7 @@ window.KATHERINE_DATA = {
       "F": "#A8554E"
     }
   },
-  "cover_note": "cover_url uses the Open Library cover-by-search pattern. If a cover is missing or wrong, replace the URL. When you move to Amazon affiliate, swap to Amazon product images.",
+  "cover_note": "Covers served from the Penguin Random House cover CDN (images.penguinrandomhouse.com/cover/<isbn>), prioritising Penguin Classics editions. Swap an isbn to change a cover.",
   "link_note": "amazon_link is an Amazon search URL (reliable placeholder). Replace with exact product links or affiliate links later.",
   "books": [
     {
@@ -28,7 +28,7 @@ window.KATHERINE_DATA = {
       "tier": "D",
       "description": "A chilling vision of total surveillance where even your thoughts aren't your own.",
       "amazon_link": "https://www.amazon.com/s?k=Nineteen+Eighty-Four+George+Orwell",
-      "cover_url": "covers/1984.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9780141187761"
     },
     {
       "rank": 2,
@@ -37,7 +37,7 @@ window.KATHERINE_DATA = {
       "tier": "C",
       "description": "Love and sacrifice set against the blood and fervor of the French Revolution.",
       "amazon_link": "https://www.amazon.com/s?k=A+Tale+of+Two+Cities+Charles+Dickens",
-      "cover_url": "https://covers.openlibrary.org/b/title/A%20Tale%20of%20Two%20Cities-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9780241589182"
     },
     {
       "rank": 3,
@@ -46,7 +46,7 @@ window.KATHERINE_DATA = {
       "tier": "B",
       "description": "A desert planet, a prophesied heir, and the most epic worldbuilding in science fiction.",
       "amazon_link": "https://www.amazon.com/s?k=Dune+Frank+Herbert",
-      "cover_url": "https://covers.openlibrary.org/b/title/Dune-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9780143111580"
     },
     {
       "rank": 4,
@@ -55,7 +55,7 @@ window.KATHERINE_DATA = {
       "tier": "B",
       "description": "A lonely girl, a hidden garden, and the quiet magic of things coming back to life.",
       "amazon_link": "https://www.amazon.com/s?k=The+Secret+Garden+Frances+Hodgson+Burnett",
-      "cover_url": "https://covers.openlibrary.org/b/title/The%20Secret%20Garden-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9780142419618"
     },
     {
       "rank": 5,
@@ -64,7 +64,7 @@ window.KATHERINE_DATA = {
       "tier": "F",
       "description": "The sharpest, most satisfying enemies-to-lovers romance ever written.",
       "amazon_link": "https://www.amazon.com/s?k=Pride+and+Prejudice+Jane+Austen",
-      "cover_url": "https://covers.openlibrary.org/b/title/Pride%20and%20Prejudice-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9781306865371"
     },
     {
       "rank": 6,
@@ -73,7 +73,7 @@ window.KATHERINE_DATA = {
       "tier": "S",
       "description": "A terrifyingly plausible future where women are property of the state.",
       "amazon_link": "https://www.amazon.com/s?k=The+Handmaid%27s+Tale+Margaret+Atwood",
-      "cover_url": "https://covers.openlibrary.org/b/title/The%20Handmaid%27s%20Tale-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9781784879679"
     },
     {
       "rank": 7,
@@ -82,7 +82,7 @@ window.KATHERINE_DATA = {
       "tier": "A",
       "description": "A fireman who burns books begins to wonder what they're worth saving.",
       "amazon_link": "https://www.amazon.com/s?k=Fahrenheit+451+Ray+Bradbury",
-      "cover_url": "https://covers.openlibrary.org/b/title/Fahrenheit%20451-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9780345342966"
     },
     {
       "rank": 8,
@@ -91,7 +91,7 @@ window.KATHERINE_DATA = {
       "tier": "C",
       "description": "Farm animals overthrow their owner, then learn power corrupts all over again.",
       "amazon_link": "https://www.amazon.com/s?k=Animal+Farm+George+Orwell",
-      "cover_url": "https://covers.openlibrary.org/b/title/Animal%20Farm-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9780140126709"
     },
     {
       "rank": 9,
@@ -100,7 +100,7 @@ window.KATHERINE_DATA = {
       "tier": "S",
       "description": "The Devil visits Soviet Moscow in a wild, funny, unclassifiable masterpiece.",
       "amazon_link": "https://www.amazon.com/s?k=The+Master+and+Margarita+Mikhail+Bulgakov",
-      "cover_url": "https://covers.openlibrary.org/b/title/The%20Master%20and%20Margarita-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9780140455465"
     },
     {
       "rank": 10,
@@ -109,7 +109,7 @@ window.KATHERINE_DATA = {
       "tier": "F",
       "description": "Rage, glory, and grief on the killing fields of Troy.",
       "amazon_link": "https://www.amazon.com/s?k=The+Iliad+Homer",
-      "cover_url": "https://covers.openlibrary.org/b/title/The%20Iliad-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9780486115016"
     },
     {
       "rank": 11,
@@ -118,7 +118,7 @@ window.KATHERINE_DATA = {
       "tier": "S",
       "description": "A plain, fierce governess refuses to bend, even for the man she loves.",
       "amazon_link": "https://www.amazon.com/s?k=Jane+Eyre+Charlotte+Bronte",
-      "cover_url": "https://covers.openlibrary.org/b/title/Jane%20Eyre-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9780141040387"
     },
     {
       "rank": 12,
@@ -127,7 +127,7 @@ window.KATHERINE_DATA = {
       "tier": "A",
       "description": "A sprawling family saga about good, evil, and the freedom to choose.",
       "amazon_link": "https://www.amazon.com/s?k=East+of+Eden+John+Steinbeck",
-      "cover_url": "https://covers.openlibrary.org/b/title/East%20of%20Eden-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9780143129486"
     },
     {
       "rank": 13,
@@ -136,7 +136,7 @@ window.KATHERINE_DATA = {
       "tier": "S",
       "description": "The original epic road trip: one man's ten-year struggle to get home.",
       "amazon_link": "https://www.amazon.com/s?k=The+Odyssey+Homer",
-      "cover_url": "https://covers.openlibrary.org/b/title/The%20Odyssey-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9781494846619"
     },
     {
       "rank": 14,
@@ -145,7 +145,7 @@ window.KATHERINE_DATA = {
       "tier": "B",
       "description": "A beautiful young man stays flawless while his portrait rots with his sins.",
       "amazon_link": "https://www.amazon.com/s?k=The+Picture+of+Dorian+Gray+Oscar+Wilde",
-      "cover_url": "https://covers.openlibrary.org/b/title/The%20Picture%20of%20Dorian%20Gray-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9780141442464"
     },
     {
       "rank": 15,
@@ -154,7 +154,7 @@ window.KATHERINE_DATA = {
       "tier": "E",
       "description": "A runaway boy and an escaping slave raft down the Mississippi toward freedom.",
       "amazon_link": "https://www.amazon.com/s?k=Adventures+of+Huckleberry+Finn+Mark+Twain",
-      "cover_url": "https://covers.openlibrary.org/b/title/Adventures%20of%20Huckleberry%20Finn-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9780141884264"
     },
     {
       "rank": 16,
@@ -163,7 +163,7 @@ window.KATHERINE_DATA = {
       "tier": "",
       "description": "An uncompromising architect would rather destroy his work than betray his vision.",
       "amazon_link": "https://www.amazon.com/s?k=The+Fountainhead+Ayn+Rand",
-      "cover_url": "https://covers.openlibrary.org/b/title/The%20Fountainhead-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9780451191151"
     },
     {
       "rank": 17,
@@ -172,7 +172,7 @@ window.KATHERINE_DATA = {
       "tier": "",
       "description": "An old revolutionary is jailed by the regime he helped create.",
       "amazon_link": "https://www.amazon.com/s?k=Darkness+at+Noon+Arthur+Koestler",
-      "cover_url": "https://covers.openlibrary.org/b/title/Darkness%20at%20Noon-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9780099424918"
     },
     {
       "rank": 18,
@@ -181,7 +181,7 @@ window.KATHERINE_DATA = {
       "tier": "",
       "description": "A small hobbit shoulders a terrible ring and the fate of the world.",
       "amazon_link": "https://www.amazon.com/s?k=The+Fellowship+of+the+Ring+Tolkien",
-      "cover_url": "https://covers.openlibrary.org/b/title/The%20Fellowship%20of%20the%20Ring-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9780345339706"
     },
     {
       "rank": 19,
@@ -190,7 +190,7 @@ window.KATHERINE_DATA = {
       "tier": "",
       "description": "Stranded schoolboys discover how thin the veneer of civilization really is.",
       "amazon_link": "https://www.amazon.com/s?k=Lord+of+the+Flies+William+Golding",
-      "cover_url": "https://covers.openlibrary.org/b/title/Lord%20of%20the%20Flies-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9780143129400"
     },
     {
       "rank": 20,
@@ -199,7 +199,7 @@ window.KATHERINE_DATA = {
       "tier": "",
       "description": "A young man breaks from faith and family to become an artist.",
       "amazon_link": "https://www.amazon.com/s?k=A+Portrait+of+the+Artist+as+a+Young+Man+James+Joyce",
-      "cover_url": "https://covers.openlibrary.org/b/title/A%20Portrait%20of%20the%20Artist%20as%20a%20Young%20Man-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9780142437346"
     },
     {
       "rank": 21,
@@ -208,7 +208,7 @@ window.KATHERINE_DATA = {
       "tier": "",
       "description": "A new bride is haunted by the perfect dead wife she can't compete with.",
       "amazon_link": "https://www.amazon.com/s?k=Rebecca+Daphne+du+Maurier",
-      "cover_url": "https://covers.openlibrary.org/b/title/Rebecca-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9780385043809"
     },
     {
       "rank": 22,
@@ -217,7 +217,7 @@ window.KATHERINE_DATA = {
       "tier": "",
       "description": "An orphan's mysterious fortune teaches him what really makes a gentleman.",
       "amazon_link": "https://www.amazon.com/s?k=Great+Expectations+Charles+Dickens",
-      "cover_url": "https://covers.openlibrary.org/b/title/Great%20Expectations-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9780141023533"
     },
     {
       "rank": 23,
@@ -226,7 +226,7 @@ window.KATHERINE_DATA = {
       "tier": "",
       "description": "An old man reads too many chivalry novels and rides off to be a knight.",
       "amazon_link": "https://www.amazon.com/s?k=Don+Quixote+Miguel+de+Cervantes",
-      "cover_url": "https://covers.openlibrary.org/b/title/Don%20Quixote-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9798705583591"
     },
     {
       "rank": 24,
@@ -235,7 +235,7 @@ window.KATHERINE_DATA = {
       "tier": "",
       "description": "Lost-generation expats drift through Paris and Pamplona, wounded and searching.",
       "amazon_link": "https://www.amazon.com/s?k=The+Sun+Also+Rises+Ernest+Hemingway",
-      "cover_url": "https://covers.openlibrary.org/b/title/The%20Sun%20Also%20Rises-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9780143136866"
     },
     {
       "rank": 25,
@@ -244,7 +244,7 @@ window.KATHERINE_DATA = {
       "tier": "",
       "description": "A proud Igbo leader watches colonialism unravel everything he knows.",
       "amazon_link": "https://www.amazon.com/s?k=Things+Fall+Apart+Chinua+Achebe",
-      "cover_url": "https://covers.openlibrary.org/b/title/Things%20Fall%20Apart-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9780141186887"
     },
     {
       "rank": 26,
@@ -253,7 +253,7 @@ window.KATHERINE_DATA = {
       "tier": "",
       "description": "A Black man in mid-century America finds himself unseen by everyone around him.",
       "amazon_link": "https://www.amazon.com/s?k=Invisible+Man+Ralph+Ellison",
-      "cover_url": "https://covers.openlibrary.org/b/title/Invisible%20Man-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9780141184425"
     },
     {
       "rank": 27,
@@ -262,7 +262,7 @@ window.KATHERINE_DATA = {
       "tier": "",
       "description": "A stammering, overlooked prince narrates the murderous rise of imperial Rome.",
       "amazon_link": "https://www.amazon.com/s?k=I+Claudius+Robert+Graves",
-      "cover_url": "https://covers.openlibrary.org/b/title/I%2C%20Claudius-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9780141911748"
     },
     {
       "rank": 28,
@@ -271,7 +271,7 @@ window.KATHERINE_DATA = {
       "tier": "",
       "description": "A WWII soldier comes unstuck in time after surviving the firebombing of Dresden.",
       "amazon_link": "https://www.amazon.com/s?k=Slaughterhouse-Five+Kurt+Vonnegut",
-      "cover_url": "https://covers.openlibrary.org/b/title/Slaughterhouse-Five-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9781784879693"
     },
     {
       "rank": 29,
@@ -280,7 +280,7 @@ window.KATHERINE_DATA = {
       "tier": "",
       "description": "A family, a summer house, and the quiet ache of time passing.",
       "amazon_link": "https://www.amazon.com/s?k=To+the+Lighthouse+Virginia+Woolf",
-      "cover_url": "https://covers.openlibrary.org/b/title/To%20the%20Lighthouse-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9780141198514"
     },
     {
       "rank": 30,
@@ -289,7 +289,7 @@ window.KATHERINE_DATA = {
       "tier": "",
       "description": "One ordinary Dublin day rendered in the most ambitious prose ever attempted.",
       "amazon_link": "https://www.amazon.com/s?k=Ulysses+James+Joyce",
-      "cover_url": "https://covers.openlibrary.org/b/title/Ulysses-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9780141197418"
     },
     {
       "rank": 31,
@@ -298,7 +298,7 @@ window.KATHERINE_DATA = {
       "tier": "",
       "description": "An entire English town's worth of ambition, marriage, and disappointment.",
       "amazon_link": "https://www.amazon.com/s?k=Middlemarch+George+Eliot",
-      "cover_url": "https://covers.openlibrary.org/b/title/Middlemarch-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9780141439549"
     },
     {
       "rank": 32,
@@ -307,7 +307,7 @@ window.KATHERINE_DATA = {
       "tier": "",
       "description": "An ex-convict's lifelong bid for redemption, hunted every step of the way.",
       "amazon_link": "https://www.amazon.com/s?k=Les+Miserables+Victor+Hugo",
-      "cover_url": "https://covers.openlibrary.org/b/title/Les%20Mis%C3%A9rables-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9780143107569"
     },
     {
       "rank": 33,
@@ -316,7 +316,7 @@ window.KATHERINE_DATA = {
       "tier": "",
       "description": "A small-town lawyer defends an innocent Black man through his daughter's eyes.",
       "amazon_link": "https://www.amazon.com/s?k=To+Kill+a+Mockingbird+Harper+Lee",
-      "cover_url": "https://covers.openlibrary.org/b/title/To%20Kill%20a%20Mockingbird-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9781785151552"
     },
     {
       "rank": 34,
@@ -325,7 +325,7 @@ window.KATHERINE_DATA = {
       "tier": "",
       "description": "A poor girl is sold into the secret, glittering world of pre-war Kyoto.",
       "amazon_link": "https://www.amazon.com/s?k=Memoirs+of+a+Geisha+Arthur+Golden",
-      "cover_url": "https://covers.openlibrary.org/b/title/Memoirs%20of%20a%20Geisha-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9780099552147"
     },
     {
       "rank": 35,
@@ -334,7 +334,7 @@ window.KATHERINE_DATA = {
       "tier": "",
       "description": "A society hostess plans a party while a whole inner life unspools beneath it.",
       "amazon_link": "https://www.amazon.com/s?k=Mrs+Dalloway+Virginia+Woolf",
-      "cover_url": "https://covers.openlibrary.org/b/title/Mrs%20Dalloway-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9780143136132"
     },
     {
       "rank": 36,
@@ -343,7 +343,7 @@ window.KATHERINE_DATA = {
       "tier": "",
       "description": "A charismatic teacher shapes her favorite girls, for better and for worse.",
       "amazon_link": "https://www.amazon.com/s?k=The+Prime+of+Miss+Jean+Brodie+Muriel+Spark",
-      "cover_url": "https://covers.openlibrary.org/b/title/The%20Prime%20of%20Miss%20Jean%20Brodie-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9780141181424"
     },
     {
       "rank": 37,
@@ -352,7 +352,7 @@ window.KATHERINE_DATA = {
       "tier": "",
       "description": "A sensitive young man is consumed by a love he knows is destroying him.",
       "amazon_link": "https://www.amazon.com/s?k=Of+Human+Bondage+Somerset+Maugham",
-      "cover_url": "https://covers.openlibrary.org/b/title/Of%20Human%20Bondage-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9780140185225"
     },
     {
       "rank": 38,
@@ -361,7 +361,7 @@ window.KATHERINE_DATA = {
       "tier": "",
       "description": "A broke writer's raw, scandalous account of bohemian life in Paris.",
       "amazon_link": "https://www.amazon.com/s?k=Tropic+of+Cancer+Henry+Miller",
-      "cover_url": "https://covers.openlibrary.org/b/title/Tropic%20of%20Cancer-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9780141399133"
     },
     {
       "rank": 39,
@@ -370,7 +370,7 @@ window.KATHERINE_DATA = {
       "tier": "",
       "description": "A Black woman in the rural South searches three marriages for her own voice.",
       "amazon_link": "https://www.amazon.com/s?k=Their+Eyes+Were+Watching+God+Zora+Neale+Hurston",
-      "cover_url": "https://covers.openlibrary.org/b/title/Their%20Eyes%20Were%20Watching%20God-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9780060199494"
     },
     {
       "rank": 40,
@@ -379,7 +379,7 @@ window.KATHERINE_DATA = {
       "tier": "",
       "description": "The restless, jazz-fueled bible of the Beat generation's wanderlust.",
       "amazon_link": "https://www.amazon.com/s?k=On+the+Road+Jack+Kerouac",
-      "cover_url": "https://covers.openlibrary.org/b/title/On%20the%20Road-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9780142437254"
     },
     {
       "rank": 41,
@@ -388,7 +388,7 @@ window.KATHERINE_DATA = {
       "tier": "",
       "description": "A naive orphan's diary exposes the cruelties of a polished London household.",
       "amazon_link": "https://www.amazon.com/s?k=The+Death+of+the+Heart+Elizabeth+Bowen",
-      "cover_url": "https://covers.openlibrary.org/b/title/The%20Death%20of%20the%20Heart-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9780385720175"
     },
     {
       "rank": 42,
@@ -397,7 +397,7 @@ window.KATHERINE_DATA = {
       "tier": "",
       "description": "An outsider is enchanted, then heartbroken, by a fading aristocratic family.",
       "amazon_link": "https://www.amazon.com/s?k=Brideshead+Revisited+Evelyn+Waugh",
-      "cover_url": "https://covers.openlibrary.org/b/title/Brideshead%20Revisited-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9780141193489"
     },
     {
       "rank": 43,
@@ -406,7 +406,7 @@ window.KATHERINE_DATA = {
       "tier": "",
       "description": "The untold story of the madwoman in Jane Eyre's attic.",
       "amazon_link": "https://www.amazon.com/s?k=Wide+Sargasso+Sea+Jean+Rhys",
-      "cover_url": "https://covers.openlibrary.org/b/title/Wide%20Sargasso%20Sea-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9780140818031"
     },
     {
       "rank": 44,
@@ -415,7 +415,7 @@ window.KATHERINE_DATA = {
       "tier": "",
       "description": "A neurotic man unloads his guilt, lust, and family on his therapist.",
       "amazon_link": "https://www.amazon.com/s?k=Portnoy%27s+Complaint+Philip+Roth",
-      "cover_url": "https://covers.openlibrary.org/b/title/Portnoy%27s%20Complaint-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9781409040750"
     },
     {
       "rank": 45,
@@ -424,7 +424,7 @@ window.KATHERINE_DATA = {
       "tier": "",
       "description": "A free-spirited rebel takes on a tyrannical nurse in a mental ward.",
       "amazon_link": "https://www.amazon.com/s?k=One+Flew+Over+the+Cuckoo%27s+Nest+Ken+Kesey",
-      "cover_url": "https://covers.openlibrary.org/b/title/One%20Flew%20Over%20the%20Cuckoo%27s%20Nest-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9780143105022"
     },
     {
       "rank": 46,
@@ -433,7 +433,7 @@ window.KATHERINE_DATA = {
       "tier": "",
       "description": "Ten strangers on an island are murdered one by one. The best whodunit ever.",
       "amazon_link": "https://www.amazon.com/s?k=And+Then+There+Were+None+Agatha+Christie",
-      "cover_url": "https://covers.openlibrary.org/b/title/And%20Then%20There%20Were%20None-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9781461139362"
     },
     {
       "rank": 47,
@@ -442,7 +442,7 @@ window.KATHERINE_DATA = {
       "tier": "",
       "description": "A scientist creates life, then abandons it, in the first true science fiction novel.",
       "amazon_link": "https://www.amazon.com/s?k=Frankenstein+Mary+Shelley",
-      "cover_url": "https://covers.openlibrary.org/b/title/Frankenstein-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9781784871635"
     },
     {
       "rank": 48,
@@ -451,7 +451,7 @@ window.KATHERINE_DATA = {
       "tier": "",
       "description": "A pilot meets a small prince who teaches him to see with the heart.",
       "amazon_link": "https://www.amazon.com/s?k=The+Little+Prince+Antoine+de+Saint-Exupery",
-      "cover_url": "https://covers.openlibrary.org/b/title/The%20Little%20Prince-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9781784874179"
     },
     {
       "rank": 49,
@@ -460,7 +460,7 @@ window.KATHERINE_DATA = {
       "tier": "",
       "description": "A poor family hauls their mother's coffin across Mississippi, told in fractured voices.",
       "amazon_link": "https://www.amazon.com/s?k=As+I+Lay+Dying+William+Faulkner",
-      "cover_url": "https://covers.openlibrary.org/b/title/As%20I%20Lay%20Dying-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9780375504525"
     },
     {
       "rank": 50,
@@ -469,7 +469,7 @@ window.KATHERINE_DATA = {
       "tier": "",
       "description": "The rise of a mafia dynasty and the son who never wanted in.",
       "amazon_link": "https://www.amazon.com/s?k=The+Godfather+Mario+Puzo",
-      "cover_url": "https://covers.openlibrary.org/b/title/The%20Godfather-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9781448106899"
     },
     {
       "rank": 51,
@@ -478,7 +478,7 @@ window.KATHERINE_DATA = {
       "tier": "",
       "description": "A man's search for his missing cat spirals into something strange and dreamlike.",
       "amazon_link": "https://www.amazon.com/s?k=The+Wind-Up+Bird+Chronicle+Haruki+Murakami",
-      "cover_url": "https://covers.openlibrary.org/b/title/The%20Wind-Up%20Bird%20Chronicle-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9780826452399"
     },
     {
       "rank": 52,
@@ -487,7 +487,7 @@ window.KATHERINE_DATA = {
       "tier": "",
       "description": "A Southern family's decline told through four wildly different minds.",
       "amazon_link": "https://www.amazon.com/s?k=The+Sound+and+the+Fury+William+Faulkner",
-      "cover_url": "https://covers.openlibrary.org/b/title/The%20Sound%20and%20the%20Fury-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9780679732242"
     },
     {
       "rank": 53,
@@ -496,7 +496,7 @@ window.KATHERINE_DATA = {
       "tier": "",
       "description": "A man kills a stranger and feels nothing, in the defining novel of the absurd.",
       "amazon_link": "https://www.amazon.com/s?k=The+Stranger+Albert+Camus",
-      "cover_url": "https://covers.openlibrary.org/b/title/The%20Stranger-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9780679720201"
     },
     {
       "rank": 54,
@@ -505,7 +505,7 @@ window.KATHERINE_DATA = {
       "tier": "",
       "description": "A formerly enslaved mother is haunted, literally, by the daughter she lost.",
       "amazon_link": "https://www.amazon.com/s?k=Beloved+Toni+Morrison",
-      "cover_url": "https://covers.openlibrary.org/b/title/Beloved-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9781784878672"
     },
     {
       "rank": 55,
@@ -514,7 +514,7 @@ window.KATHERINE_DATA = {
       "tier": "",
       "description": "A woman wears her sin in public while the man who shared it stays hidden.",
       "amazon_link": "https://www.amazon.com/s?k=The+Scarlet+Letter+Nathaniel+Hawthorne",
-      "cover_url": "https://covers.openlibrary.org/b/title/The%20Scarlet%20Letter-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9780141974484"
     },
     {
       "rank": 56,
@@ -523,7 +523,7 @@ window.KATHERINE_DATA = {
       "tier": "",
       "description": "A pompous, lazy genius wreaks comic havoc across New Orleans.",
       "amazon_link": "https://www.amazon.com/s?k=A+Confederacy+of+Dunces+John+Kennedy+Toole",
-      "cover_url": "https://covers.openlibrary.org/b/title/A%20Confederacy%20of%20Dunces-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9780241284667"
     },
     {
       "rank": 57,
@@ -532,7 +532,7 @@ window.KATHERINE_DATA = {
       "tier": "",
       "description": "Russian aristocrats love, fight, and grow up against the Napoleonic Wars.",
       "amazon_link": "https://www.amazon.com/s?k=War+and+Peace+Leo+Tolstoy",
-      "cover_url": "https://covers.openlibrary.org/b/title/War%20and%20Peace-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9780143039990"
     },
     {
       "rank": 58,
@@ -541,7 +541,7 @@ window.KATHERINE_DATA = {
       "tier": "",
       "description": "An endless lawsuit poisons everyone it touches in Dickens's sharpest novel.",
       "amazon_link": "https://www.amazon.com/s?k=Bleak+House+Charles+Dickens",
-      "cover_url": "https://covers.openlibrary.org/b/title/Bleak%20House-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9780141439723"
     },
     {
       "rank": 59,
@@ -550,7 +550,7 @@ window.KATHERINE_DATA = {
       "tier": "",
       "description": "A man is arrested and prosecuted by a faceless system that never names his crime.",
       "amazon_link": "https://www.amazon.com/s?k=The+Trial+Franz+Kafka",
-      "cover_url": "https://covers.openlibrary.org/b/title/The%20Trial-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9780141182902"
     },
     {
       "rank": 60,
@@ -559,7 +559,7 @@ window.KATHERINE_DATA = {
       "tier": "",
       "description": "A traveler's tall tales double as a savage satire of human folly.",
       "amazon_link": "https://www.amazon.com/s?k=Gulliver%27s+Travels+Jonathan+Swift",
-      "cover_url": "https://covers.openlibrary.org/b/title/Gulliver%27s%20Travels-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9780141196640"
     },
     {
       "rank": 61,
@@ -568,7 +568,7 @@ window.KATHERINE_DATA = {
       "tier": "",
       "description": "A golden all-American life shatters when a man's daughter turns radical.",
       "amazon_link": "https://www.amazon.com/s?k=American+Pastoral+Philip+Roth",
-      "cover_url": "https://covers.openlibrary.org/b/title/American%20Pastoral-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9781446400562"
     },
     {
       "rank": 62,
@@ -577,7 +577,7 @@ window.KATHERINE_DATA = {
       "tier": "",
       "description": "An envoy to a genderless world must rethink everything he knows about people.",
       "amazon_link": "https://www.amazon.com/s?k=The+Left+Hand+of+Darkness+Ursula+Le+Guin",
-      "cover_url": "https://covers.openlibrary.org/b/title/The%20Left%20Hand%20of%20Darkness-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9780143111597"
     },
     {
       "rank": 63,
@@ -586,7 +586,7 @@ window.KATHERINE_DATA = {
       "tier": "",
       "description": "An ambulance driver and a nurse fall in love amid the ruin of WWI.",
       "amazon_link": "https://www.amazon.com/s?k=A+Farewell+to+Arms+Ernest+Hemingway",
-      "cover_url": "https://covers.openlibrary.org/b/title/A%20Farewell%20to%20Arms-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9780434022489"
     },
     {
       "rank": 64,
@@ -595,7 +595,7 @@ window.KATHERINE_DATA = {
       "tier": "",
       "description": "The count comes to London, and the vampire legend is born.",
       "amazon_link": "https://www.amazon.com/s?k=Dracula+Bram+Stoker",
-      "cover_url": "https://covers.openlibrary.org/b/title/Dracula-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9780142419168"
     },
     {
       "rank": 65,
@@ -604,7 +604,7 @@ window.KATHERINE_DATA = {
       "tier": "",
       "description": "A clique of classics students commits murder, then comes apart at the seams.",
       "amazon_link": "https://www.amazon.com/s?k=The+Secret+History+Donna+Tartt",
-      "cover_url": "https://covers.openlibrary.org/b/title/The%20Secret%20History-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9780140167771"
     },
     {
       "rank": 66,
@@ -613,7 +613,7 @@ window.KATHERINE_DATA = {
       "tier": "",
       "description": "One man's lifelong struggle to own a home, and a scrap of dignity, in Trinidad.",
       "amazon_link": "https://www.amazon.com/s?k=A+House+for+Mr+Biswas+V+S+Naipaul",
-      "cover_url": "https://covers.openlibrary.org/b/title/A%20House%20for%20Mr.%20Biswas-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9780679444589"
     },
     {
       "rank": 67,
@@ -622,7 +622,7 @@ window.KATHERINE_DATA = {
       "tier": "",
       "description": "A Harlem boy wrestles with faith, family, and his stepfather's wrath.",
       "amazon_link": "https://www.amazon.com/s?k=Go+Tell+It+on+the+Mountain+James+Baldwin",
-      "cover_url": "https://covers.openlibrary.org/b/title/Go%20Tell%20It%20on%20the%20Mountain-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9780593688977"
     },
     {
       "rank": 68,
@@ -631,7 +631,7 @@ window.KATHERINE_DATA = {
       "tier": "",
       "description": "A shopkeeper tries to build a life in a newly independent African nation.",
       "amazon_link": "https://www.amazon.com/s?k=A+Bend+in+the+River+V+S+Naipaul",
-      "cover_url": "https://covers.openlibrary.org/b/title/A%20Bend%20in%20the%20River-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9780679722021"
     },
     {
       "rank": 69,
@@ -640,7 +640,7 @@ window.KATHERINE_DATA = {
       "tier": "",
       "description": "A father's murder forces three brothers to confront God, doubt, and guilt.",
       "amazon_link": "https://www.amazon.com/s?k=The+Brothers+Karamazov+Fyodor+Dostoevsky",
-      "cover_url": "https://covers.openlibrary.org/b/title/The%20Brothers%20Karamazov-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9781530117505"
     },
     {
       "rank": 70,
@@ -649,7 +649,7 @@ window.KATHERINE_DATA = {
       "tier": "",
       "description": "A man with no scent of his own murders to capture the perfect human smell.",
       "amazon_link": "https://www.amazon.com/s?k=Perfume+Patrick+Suskind",
-      "cover_url": "https://covers.openlibrary.org/b/title/Perfume-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9780140120837"
     },
     {
       "rank": 71,
@@ -658,7 +658,7 @@ window.KATHERINE_DATA = {
       "tier": "",
       "description": "A tiny boy with a wrecked voice believes he's God's instrument, and may be right.",
       "amazon_link": "https://www.amazon.com/s?k=A+Prayer+for+Owen+Meany+John+Irving",
-      "cover_url": "https://covers.openlibrary.org/b/title/A%20Prayer%20for%20Owen%20Meany-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9780345417978"
     },
     {
       "rank": 72,
@@ -667,7 +667,7 @@ window.KATHERINE_DATA = {
       "tier": "",
       "description": "A father and son walk a dead world, carrying nothing but each other.",
       "amazon_link": "https://www.amazon.com/s?k=The+Road+Cormac+McCarthy",
-      "cover_url": "https://covers.openlibrary.org/b/title/The%20Road-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9781283995344"
     },
     {
       "rank": 73,
@@ -676,7 +676,7 @@ window.KATHERINE_DATA = {
       "tier": "",
       "description": "A Black woman in the South finds her voice through letters and hard-won love.",
       "amazon_link": "https://www.amazon.com/s?k=The+Color+Purple+Alice+Walker",
-      "cover_url": "https://covers.openlibrary.org/b/title/The%20Color%20Purple-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9780143137047"
     },
     {
       "rank": 74,
@@ -685,7 +685,7 @@ window.KATHERINE_DATA = {
       "tier": "",
       "description": "Noble houses scheme and slaughter for a throne while winter creeps closer.",
       "amazon_link": "https://www.amazon.com/s?k=A+Game+of+Thrones+George+R+R+Martin",
-      "cover_url": "https://covers.openlibrary.org/b/title/A%20Game%20of%20Thrones-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9780593158203"
     },
     {
       "rank": 75,
@@ -694,7 +694,7 @@ window.KATHERINE_DATA = {
       "tier": "",
       "description": "The building of a cathedral becomes an epic of ambition, faith, and feud.",
       "amazon_link": "https://www.amazon.com/s?k=The+Pillars+of+the+Earth+Ken+Follett",
-      "cover_url": "https://covers.openlibrary.org/b/title/The%20Pillars%20of%20the%20Earth-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9780143142386"
     },
     {
       "rank": 76,
@@ -703,7 +703,7 @@ window.KATHERINE_DATA = {
       "tier": "",
       "description": "A mild nature columnist is mistaken for a war correspondent, with farcical results.",
       "amazon_link": "https://www.amazon.com/s?k=Scoop+Evelyn+Waugh",
-      "cover_url": "https://covers.openlibrary.org/b/title/Scoop-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9780141886367"
     },
     {
       "rank": 77,
@@ -712,7 +712,7 @@ window.KATHERINE_DATA = {
       "tier": "",
       "description": "Two sisters, one all reason and one all feeling, both learn the cost of love.",
       "amazon_link": "https://www.amazon.com/s?k=Sense+and+Sensibility+Jane+Austen",
-      "cover_url": "https://covers.openlibrary.org/b/title/Sense%20and%20Sensibility-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9780141439662"
     },
     {
       "rank": 78,
@@ -721,7 +721,7 @@ window.KATHERINE_DATA = {
       "tier": "",
       "description": "A populist politician's rise and corruption, seen by the man who enables him.",
       "amazon_link": "https://www.amazon.com/s?k=All+the+King%27s+Men+Robert+Penn+Warren",
-      "cover_url": "https://covers.openlibrary.org/b/title/All%20the%20King%27s%20Men-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9780156004800"
     },
     {
       "rank": 79,
@@ -730,7 +730,7 @@ window.KATHERINE_DATA = {
       "tier": "",
       "description": "A man engaged to the perfect woman falls for the one society forbids.",
       "amazon_link": "https://www.amazon.com/s?k=The+Age+of+Innocence+Edith+Wharton",
-      "cover_url": "https://covers.openlibrary.org/b/title/The%20Age%20of%20Innocence-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9780143134817"
     },
     {
       "rank": 80,
@@ -739,7 +739,7 @@ window.KATHERINE_DATA = {
       "tier": "",
       "description": "A love so fierce it curses two families across the moors for generations.",
       "amazon_link": "https://www.amazon.com/s?k=Wuthering+Heights+Emily+Bronte",
-      "cover_url": "https://covers.openlibrary.org/b/title/Wuthering%20Heights-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9780140620122"
     },
     {
       "rank": 81,
@@ -748,7 +748,7 @@ window.KATHERINE_DATA = {
       "tier": "",
       "description": "A river journey into the Congo becomes a descent into human darkness.",
       "amazon_link": "https://www.amazon.com/s?k=Heart+of+Darkness+Joseph+Conrad",
-      "cover_url": "https://covers.openlibrary.org/b/title/Heart%20of%20Darkness-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9780141199788"
     },
     {
       "rank": 82,
@@ -757,7 +757,7 @@ window.KATHERINE_DATA = {
       "tier": "",
       "description": "Mole, Rat, and the reckless Mr. Toad in the coziest of riverbank adventures.",
       "amazon_link": "https://www.amazon.com/s?k=The+Wind+in+the+Willows+Kenneth+Grahame",
-      "cover_url": "https://covers.openlibrary.org/b/title/The%20Wind%20in%20the%20Willows-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9780143039099"
     },
     {
       "rank": 83,
@@ -766,7 +766,7 @@ window.KATHERINE_DATA = {
       "tier": "",
       "description": "A wronged man escapes prison, finds a fortune, and engineers perfect revenge.",
       "amazon_link": "https://www.amazon.com/s?k=The+Count+of+Monte+Cristo+Alexandre+Dumas",
-      "cover_url": "https://covers.openlibrary.org/b/title/The%20Count%20of%20Monte%20Cristo-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9780140373530"
     },
     {
       "rank": 84,
@@ -775,7 +775,7 @@ window.KATHERINE_DATA = {
       "tier": "",
       "description": "Four sisters grow up, chase dreams, and break your heart in Civil War New England.",
       "amazon_link": "https://www.amazon.com/s?k=Little+Women+Louisa+May+Alcott",
-      "cover_url": "https://covers.openlibrary.org/b/title/Little%20Women-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9781543283709"
     },
     {
       "rank": 85,
@@ -784,7 +784,7 @@ window.KATHERINE_DATA = {
       "tier": "",
       "description": "A domestic dog is dragged to the Yukon and rediscovers his wild instincts.",
       "amazon_link": "https://www.amazon.com/s?k=The+Call+of+the+Wild+Jack+London",
-      "cover_url": "https://covers.openlibrary.org/b/title/The%20Call%20of%20the%20Wild-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9780241735282"
     },
     {
       "rank": 86,
@@ -793,7 +793,7 @@ window.KATHERINE_DATA = {
       "tier": "",
       "description": "A violent young thug is brainwashed into goodness, raising the question of free will.",
       "amazon_link": "https://www.amazon.com/s?k=A+Clockwork+Orange+Anthony+Burgess",
-      "cover_url": "https://covers.openlibrary.org/b/title/A%20Clockwork%20Orange-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9780141182605"
     },
     {
       "rank": 87,
@@ -802,7 +802,7 @@ window.KATHERINE_DATA = {
       "tier": "",
       "description": "A girl falls down a rabbit hole into the most gloriously nonsensical world.",
       "amazon_link": "https://www.amazon.com/s?k=Alice%27s+Adventures+in+Wonderland+Lewis+Carroll",
-      "cover_url": "https://covers.openlibrary.org/b/title/Alice%27s%20Adventures%20in%20Wonderland-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9781784870171"
     },
     {
       "rank": 88,
@@ -811,7 +811,7 @@ window.KATHERINE_DATA = {
       "tier": "",
       "description": "A married woman risks everything for passion in the great novel of love and ruin.",
       "amazon_link": "https://www.amazon.com/s?k=Anna+Karenina+Leo+Tolstoy",
-      "cover_url": "https://covers.openlibrary.org/b/title/Anna%20Karenina-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9783734502576"
     },
     {
       "rank": 89,
@@ -820,7 +820,7 @@ window.KATHERINE_DATA = {
       "tier": "",
       "description": "A WWII bombardier tries to stay sane inside the insane logic of war.",
       "amazon_link": "https://www.amazon.com/s?k=Catch-22+Joseph+Heller",
-      "cover_url": "https://covers.openlibrary.org/b/title/Catch-22-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9781784878696"
     },
     {
       "rank": 90,
@@ -829,7 +829,7 @@ window.KATHERINE_DATA = {
       "tier": "",
       "description": "A pleasure-engineered society where happiness has quietly replaced freedom.",
       "amazon_link": "https://www.amazon.com/s?k=Brave+New+World+Aldous+Huxley",
-      "cover_url": "https://covers.openlibrary.org/b/title/Brave%20New%20World-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9781784870140"
     },
     {
       "rank": 91,
@@ -838,7 +838,7 @@ window.KATHERINE_DATA = {
       "tier": "",
       "description": "An ambiguous incident in a cave ignites the tensions of colonial India.",
       "amazon_link": "https://www.amazon.com/s?k=A+Passage+to+India+E+M+Forster",
-      "cover_url": "https://covers.openlibrary.org/b/title/A%20Passage%20to%20India-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9780241540428"
     },
     {
       "rank": 92,
@@ -847,7 +847,7 @@ window.KATHERINE_DATA = {
       "tier": "",
       "description": "Earth is demolished for a highway, and the funniest sci-fi romp begins.",
       "amazon_link": "https://www.amazon.com/s?k=The+Hitchhiker%27s+Guide+to+the+Galaxy+Douglas+Adams",
-      "cover_url": "https://covers.openlibrary.org/b/title/The%20Hitchhiker%27s%20Guide%20to%20the%20Galaxy-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9780385347303"
     },
     {
       "rank": 93,
@@ -856,7 +856,7 @@ window.KATHERINE_DATA = {
       "tier": "",
       "description": "A student murders for a theory, then drowns in guilt and paranoia.",
       "amazon_link": "https://www.amazon.com/s?k=Crime+and+Punishment+Fyodor+Dostoevsky",
-      "cover_url": "https://covers.openlibrary.org/b/title/Crime%20and%20Punishment-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9780140449136"
     },
     {
       "rank": 94,
@@ -865,7 +865,7 @@ window.KATHERINE_DATA = {
       "tier": "",
       "description": "Seven generations of one family in a town where the magical is everyday.",
       "amazon_link": "https://www.amazon.com/s?k=One+Hundred+Years+of+Solitude+Gabriel+Garcia+Marquez",
-      "cover_url": "https://covers.openlibrary.org/b/title/One%20Hundred%20Years%20of%20Solitude-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9780241968581"
     },
     {
       "rank": 95,
@@ -874,7 +874,7 @@ window.KATHERINE_DATA = {
       "tier": "",
       "description": "A captain's obsession with one white whale drags his whole crew toward doom.",
       "amazon_link": "https://www.amazon.com/s?k=Moby-Dick+Herman+Melville",
-      "cover_url": "https://covers.openlibrary.org/b/title/Moby-Dick-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9780141198958"
     },
     {
       "rank": 96,
@@ -883,7 +883,7 @@ window.KATHERINE_DATA = {
       "tier": "",
       "description": "A predator's beautiful, monstrous confession, told in dazzling, damning prose.",
       "amazon_link": "https://www.amazon.com/s?k=Lolita+Vladimir+Nabokov",
-      "cover_url": "https://covers.openlibrary.org/b/title/Lolita-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9780141193670"
     },
     {
       "rank": 97,
@@ -892,7 +892,7 @@ window.KATHERINE_DATA = {
       "tier": "",
       "description": "A disaffected teen wanders New York, raging against everything phony.",
       "amazon_link": "https://www.amazon.com/s?k=The+Catcher+in+the+Rye+J+D+Salinger",
-      "cover_url": "https://covers.openlibrary.org/b/title/The%20Catcher%20in%20the%20Rye-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9780140237504"
     },
     {
       "rank": 98,
@@ -901,7 +901,7 @@ window.KATHERINE_DATA = {
       "tier": "",
       "description": "A dust-bowl family heads west for work and finds the American dream broken.",
       "amazon_link": "https://www.amazon.com/s?k=The+Grapes+of+Wrath+John+Steinbeck",
-      "cover_url": "https://covers.openlibrary.org/b/title/The%20Grapes%20of%20Wrath-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9780140281620"
     },
     {
       "rank": 99,
@@ -910,7 +910,7 @@ window.KATHERINE_DATA = {
       "tier": "",
       "description": "A comfortable hobbit is swept into a quest for treasure and a sleeping dragon.",
       "amazon_link": "https://www.amazon.com/s?k=The+Hobbit+J+R+R+Tolkien",
-      "cover_url": "https://covers.openlibrary.org/b/title/The%20Hobbit-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9780345339683"
     },
     {
       "rank": 100,
@@ -919,7 +919,7 @@ window.KATHERINE_DATA = {
       "tier": "",
       "description": "A haunted hotel slowly turns a struggling father into his family's nightmare.",
       "amazon_link": "https://www.amazon.com/s?k=The+Shining+Stephen+King",
-      "cover_url": "https://covers.openlibrary.org/b/title/The%20Shining-M.jpg"
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9780385528863"
     }
   ]
 };
