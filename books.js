@@ -914,12 +914,12 @@ window.KATHERINE_DATA = {
     },
     {
       "rank": 100,
-      "title": "The Shining",
-      "author": "Stephen King",
+      "title": "The Great Gatsby",
+      "author": "F. Scott Fitzgerald",
       "tier": "",
-      "description": "A haunted hotel slowly turns a struggling father into his family's nightmare.",
-      "amazon_link": "https://www.amazon.com/s?k=The+Shining+Stephen+King",
-      "cover_url": "https://images.penguinrandomhouse.com/cover/9780385528863"
+      "description": "Glittering parties, old money, and one man's doomed dream of repeating the past.",
+      "amazon_link": "https://www.amazon.com/s?k=The+Great+Gatsby+F+Scott+Fitzgerald",
+      "cover_url": "https://images.penguinrandomhouse.com/cover/9780141182636"
     }
   ]
 };
