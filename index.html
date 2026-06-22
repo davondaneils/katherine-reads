@@ -67,6 +67,10 @@
   @media (max-width: 520px) {
     .row-cover { width: 54px !important; height: 80px !important; }
     .wrap { padding: 0 18px; }
+    /* Descriptions are hidden, so collapse their reserved space on mobile and
+       tighten the rows for a more compact list. */
+    .book-desc { display: none; }
+    #list > div { padding-top: 16px !important; padding-bottom: 16px !important; }
   }
 </style>
 </head>
