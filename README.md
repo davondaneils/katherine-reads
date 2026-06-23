@@ -1,11 +1,12 @@
 # Katherine Reads
 
-A single-page site listing the 100 greatest books of all time, ranked — each with a cover, a one-line take, a tier grade (S–F), and a link to grab a copy. Static site, no build step.
+A static site for Katherine Reads / The Greatest Book Club. The homepage is the book-club landing page (signup); a secondary page lists the 100 greatest books of all time, ranked — each with a cover, a one-line take, a tier grade (S–F), and a link to grab a copy. No build step.
 
 ## Files
 
-- `index.html` — the whole site (HTML + CSS + a little vanilla JS).
-- `books.js` — the data. **This is the only file you normally edit.**
+- `index.html` — the homepage: The Greatest Book Club landing page (hero, email signup, book-cover ticker).
+- `list.html` — the ranked list of the 100 greatest books (HTML + CSS + a little vanilla JS). The two pages cross-link in the nav.
+- `books.js` — the data behind the list. **This is the only file you normally edit.**
 - `vercel.json` — tells Vercel never to cache `books.js`, so your edits go live immediately.
 
 ## Editing the list
@@ -13,7 +14,7 @@ A single-page site listing the 100 greatest books of all time, ranked — each w
 Open `books.js` and edit the `books` array. The file is just the data wrapped in
 `window.KATHERINE_DATA = { … };` — keep that wrapper, and edit the entries inside.
 (It's stored as `.js` rather than `.json` so the list also loads when you open
-`index.html` directly from disk, not only when served over HTTP.) Each entry:
+`list.html` directly from disk, not only when served over HTTP.) Each entry:
 
 ```js
 {
