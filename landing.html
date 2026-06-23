@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>The Greatest Book Club — the 100 greatest books, read together</title>
+<meta name="description" content="The 100 greatest books, read together — one a month, with a letter from Katherine, a few things for your mailbox, and a room full of readers on the same page.">
+<meta name="theme-color" content="#FBF7F0">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23FBF7F0'/%3E%3Crect x='26' y='34' width='40' height='7' rx='3' fill='%23C9A24B'/%3E%3Crect x='26' y='47' width='48' height='7' rx='3' fill='%23B07A52'/%3E%3Crect x='26' y='60' width='53' height='7' rx='3' fill='%234A3B30'/%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: #FBF7F0; }
+  input { font-family: inherit; }
+  a:focus-visible, input:focus-visible, button:focus-visible { outline: 2px solid #B07A52; outline-offset: 3px; border-radius: 4px; }
+
+  @keyframes gbc-ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  .gbc-ticker-track { display: flex; gap: 20px; width: max-content; animation: gbc-ticker 40s linear infinite; }
+  .gbc-ticker-mask:hover .gbc-ticker-track { animation-play-state: paused; }
+  @keyframes gbc-quotes { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  .gbc-quotes-track { display: flex; gap: 24px; width: max-content; animation: gbc-quotes 70s linear infinite; }
+  .gbc-quotes-mask:hover .gbc-quotes-track { animation-play-state: paused; }
+  @keyframes gbc-rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+  @keyframes gbc-pulse { 0%, 100% { box-shadow: 0 0 0 3px rgba(201,162,75,0.22); } 50% { box-shadow: 0 0 0 7px rgba(201,162,75,0.04); } }
+  .gbc-hero-anim { opacity: 0; animation: gbc-rise 0.7s cubic-bezier(0.22,0.61,0.36,1) forwards; }
+  .gbc-reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.7s cubic-bezier(0.22,0.61,0.36,1), transform 0.7s cubic-bezier(0.22,0.61,0.36,1); }
+  .gbc-reveal.gbc-in { opacity: 1; transform: none; }
+
+  /* Interactive states (ported from the prototype's style-hover/focus/active) */
+  .gbc-input:focus { border-color: #B07A52; box-shadow: 0 0 0 3px rgba(176,122,82,0.2); outline: none; }
+  .gbc-btn:hover { background: #5AA083 !important; box-shadow: 0 9px 22px rgba(74,59,48,0.22); transform: translateY(-2px); }
+  .gbc-btn:active { background: #3F7A60 !important; transform: translateY(1px); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .gbc-hero-anim, .gbc-reveal { animation: none !important; opacity: 1 !important; transform: none !important; transition: none !important; }
+    .gbc-ticker-track, .gbc-quotes-track { animation: none !important; }
+  }
+  @media (max-width: 760px) {
+    .gbc-sec-pad { padding-top: 56px !important; padding-bottom: 56px !important; }
+    .gbc-hero-pad { padding-top: 48px !important; padding-bottom: 48px !important; gap: 36px !important; }
+    .gbc-h-hero { font-size: 56px !important; letter-spacing: -0.9px !important; }
+    .gbc-h-sec { font-size: 40px !important; }
+    .gbc-bento { grid-template-columns: 1fr !important; }
+    .gbc-bento > div { grid-column: auto !important; }
+    .gbc-bento .gbc-letter-img, .gbc-bento .gbc-bm-fan { height: 240px !important; }
+    .gbc-bm { bottom: -46px !important; }
+    .gbc-steps { grid-template-columns: 1fr 1fr !important; row-gap: 36px !important; }
+    .gbc-steps-line { display: none !important; }
+    .gbc-why-img { height: 320px !important; }
+    .gbc-ticker-track > div { width: 120px !important; height: 173px !important; }
+  }
+  @media (max-width: 440px) {
+    .gbc-steps { grid-template-columns: 1fr !important; }
+    .gbc-h-hero { font-size: 48px !important; }
+  }
+</style>
+</head>
+
+<body>
+<div style="width:100%; background:#FBF7F0; color:#4A3B30; font-family:Inter, sans-serif;">
+
+  <!-- NAV -->
+  <div style="position:sticky; top:0; z-index:20; background:rgba(251,247,240,0.9); backdrop-filter:blur(8px); border-bottom:1px solid #EAE2D4;">
+    <div style="max-width:1080px; margin:0 auto; padding:13px 24px; display:flex; align-items:center; gap:12px;">
+      <div style="display:flex; flex-direction:column; gap:3px;">
+        <div style="width:30px; height:5px; border-radius:2px; background:#C9A24B;"></div>
+        <div style="width:36px; height:5px; border-radius:2px; background:#B07A52;"></div>
+        <div style="width:40px; height:5px; border-radius:2px; background:#4A3B30;"></div>
+      </div>
+      <div style="display:flex; flex-direction:column; line-height:1.05;">
+        <span style="font-family:'Playfair Display',serif; font-weight:500; font-size:15px; letter-spacing:-0.15px; color:#4A3B30;">The Greatest</span>
+        <span style="font-family:'Playfair Display',serif; font-weight:600; font-style:italic; font-size:16px; color:#B07A52;">Book Club</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div style="background:#FBF7F0 url('uploads/hero-background.png') center/cover no-repeat;">
+    <div class="gbc-hero-pad" style="max-width:1080px; margin:0 auto; padding:80px 24px; display:flex; flex-wrap:wrap; gap:64px; align-items:center;">
+
+      <div style="flex:1 1 440px; display:flex; flex-direction:column; gap:24px;">
+        <div class="gbc-hero-anim" style="align-self:flex-start; display:inline-flex; align-items:center; gap:8px; background:#FFFDF8; border:1px solid #E4D7C4; border-radius:999px; box-shadow:0 1px 3px rgba(74,59,48,0.06); padding:8px 16px;">
+          <div style="width:7px; height:7px; border-radius:50%; background:#C9A24B; animation:gbc-pulse 3s ease-in-out infinite;"></div>
+          <span style="font-weight:600; font-size:11px; letter-spacing:0.66px; color:#8A5A38;">Only 50 founding spots · $10/mo locked for life</span>
+        </div>
+
+        <h1 class="gbc-h-hero gbc-hero-anim" style="animation-delay:0.1s; margin:0; font-family:'Playfair Display',serif; font-weight:600; font-style:italic; font-size:64px; line-height:1.02; letter-spacing:-1.3px; color:#4A3B30;">The 100<br>greatest books,<br><span style="color:#B07A52;">read together.</span></h1>
+
+        <p class="gbc-hero-anim" style="animation-delay:0.2s; margin:0; font-size:17px; line-height:1.6; color:#5C4D40; max-width:460px;">You've watched me rank them. Now we read them, one a month, with a letter from me in your mailbox, a few things to make each book yours, and a room full of people on the same page as you.</p>
+
+        <div class="gbc-hero-anim" style="animation-delay:0.3s; display:flex; flex-direction:column; gap:10px; max-width:440px; text-align:center;">
+          <input class="gbc-input" type="email" placeholder="name@example.com" style="border:1.5px solid #DDD2C0; border-radius:8px; background:#FFFFFF; padding:13px 14px; font-family:Inter, sans-serif; font-size:15px; color:#4A3B30; outline:none; transition:border-color .15s, box-shadow .15s;">
+          <button class="gbc-btn" type="button" onclick="document.getElementById('gbc-hero-done').style.display='inline'; return false;" style="display:inline-flex; align-items:center; justify-content:center; border:1.5px solid transparent; cursor:pointer; border-radius:8px; background:#4A8C6F; box-shadow:0 2px 6px rgba(74,59,48,0.16); padding:13px 26px; font-family:Inter, sans-serif; font-weight:600; font-size:14px; letter-spacing:0.01em; line-height:1; color:#FBF7F0; transition:background .15s, box-shadow .15s, transform .12s;">Reserve my founding spot</button>
+          <span id="gbc-hero-done" style="display:none; font-size:13px; color:#4A8C6F; font-weight:600;">✓ You're on the list — check your inbox.</span>
+          <span style="font-size:12.5px; color:#8A7B6B;">No payment now, just locking your spot and your founding price.</span>
+          <a href="index.html" style="font-size:13px; color:#9C8E7E; text-decoration:underline;">Just here for the book list? click here</a>
+        </div>
+      </div>
+
+      <div style="flex:1 1 360px; min-width:300px;">
+        <img src="uploads/hero-image-3.png" alt="Katherine holding Animal Farm by George Orwell" style="display:block; width:100%; height:512px; object-fit:cover; border-radius:16px; box-shadow:0 22px 50px rgba(74,59,48,0.18);">
+      </div>
+
+    </div>
+
+    <div class="gbc-ticker-mask" style="padding:0 0 80px; overflow:hidden; -webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent); mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);">
+      <div class="gbc-ticker-track" id="gbc-ticker-track"></div>
+    </div>
+  </div>
+
+  <!-- WHAT ARRIVES -->
+  <div style="background:#FBF7F0;">
+    <div class="gbc-sec-pad" style="max-width:1080px; margin:0 auto; padding:96px 24px; display:flex; flex-direction:column; gap:40px; align-items:center;">
+      <div style="display:flex; flex-direction:column; gap:16px; align-items:center; text-align:center;">
+        <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:1.76px; text-transform:uppercase; color:#B07A52;">What arrives each month</span>
+        <h2 class="gbc-h-sec" style="margin: 0; font-family: 'Playfair Display',serif; font-weight: 700; font-size: 46px; letter-spacing: -0.48px; color: #4A3B30; font-style: italic">More than a book in the mail</h2>
+        <p style="margin:0; font-size:16px; line-height:1.6; color:#5C4D40; max-width:540px;">Every month a parcel lands on your doorstep with everything that turns reading into a ritual.</p>
+      </div>
+
+      <div class="gbc-bento" style="width:100%; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:24px;">
+        <div class="gbc-reveal" data-rev-i="0" style="grid-column:span 2; background:#FFFFFF; border:1px solid #EAE2D4; border-radius:16px; box-shadow:0 1px 3px rgba(74,59,48,0.05); padding:24px; display:flex; flex-direction:column; gap:18px;">
+          <img class="gbc-letter-img" src="covers/letter.gif" alt="Typing the monthly introduction letter" style="display:block; width:100%; height:380px; object-fit:cover; border-radius:10px;">
+          <div style="display:flex; flex-direction:column; gap:8px;">
+            <span style="font-weight:600; font-size:19px; color:#4A3B30;">A personal introduction letter from me</span>
+            <span style="font-size:15px; line-height:1.55; color:#5C4D40;">This letter covers what we're reading, why it made the list, and what to watch for. Read it before page one.</span>
+          </div>
+        </div>
+        <div class="gbc-reveal" data-rev-i="1" style="background:#FFFFFF; border:1px solid #EAE2D4; border-radius:16px; box-shadow:0 1px 3px rgba(74,59,48,0.05); padding:24px; display:flex; flex-direction:column; gap:18px;">
+          <div class="gbc-bm-fan" style="position: relative; width: 100%; height: 380px; border-radius: 10px; overflow: hidden; background-color: #fcf7f0">
+            <div class="gbc-bm" data-angle="-34" style="position:absolute; left:50%; bottom:54px; width:88px; height:264px; margin-left:-44px; transform-origin:50% 100%; border-radius:8px; overflow:hidden; box-shadow:0 14px 30px rgba(74,59,48,0.28); outline:3px solid #FBF7F0;">
+              <img src="covers/bookmark-1.png" alt="Custom bookmark" style="display:block; width:100%; height:100%; object-fit:cover;">
+            </div>
+            <div class="gbc-bm" data-angle="-17" style="position:absolute; left:50%; bottom:54px; width:88px; height:264px; margin-left:-44px; transform-origin:50% 100%; border-radius:8px; overflow:hidden; box-shadow:0 14px 30px rgba(74,59,48,0.28); outline:3px solid #FBF7F0;">
+              <img src="covers/bookmark-5.png" alt="Custom bookmark" style="display:block; width:100%; height:100%; object-fit:cover;">
+            </div>
+            <div class="gbc-bm" data-angle="0" style="position:absolute; left:50%; bottom:54px; width:88px; height:264px; margin-left:-44px; transform-origin:50% 100%; border-radius:8px; overflow:hidden; box-shadow:0 16px 34px rgba(74,59,48,0.3); outline:3px solid #FBF7F0;">
+              <img src="covers/bookmark-3.png" alt="Custom bookmark" style="display:block; width:100%; height:100%; object-fit:cover;">
+            </div>
+            <div class="gbc-bm" data-angle="17" style="position:absolute; left:50%; bottom:54px; width:88px; height:264px; margin-left:-44px; transform-origin:50% 100%; border-radius:8px; overflow:hidden; box-shadow:0 14px 30px rgba(74,59,48,0.28); outline:3px solid #FBF7F0;">
+              <img src="covers/bookmark-2.png" alt="Custom bookmark" style="display:block; width:100%; height:100%; object-fit:cover;">
+            </div>
+            <div class="gbc-bm" data-angle="34" style="position:absolute; left:50%; bottom:54px; width:88px; height:264px; margin-left:-44px; transform-origin:50% 100%; border-radius:8px; overflow:hidden; box-shadow:0 14px 30px rgba(74,59,48,0.28); outline:3px solid #FBF7F0;">
+              <img src="covers/bookmark-4.png" alt="Custom bookmark" style="display:block; width:100%; height:100%; object-fit:cover;">
+            </div>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:8px;">
+            <span style="font-weight:600; font-size:19px; color:#4A3B30;">Custom bookmark</span>
+            <span style="font-size:15px; line-height:1.55; color:#5C4D40;">A new one every month, made specifically for that book.</span>
+          </div>
+        </div>
+        <div class="gbc-reveal" data-rev-i="2" style="background: #FFFFFF; border: 1px solid #EAE2D4; border-radius: 16px; box-shadow: 0 1px 3px rgba(74,59,48,0.05); padding: 24px; display: none; flex-direction: column; gap: 18px">
+          <div style="display:block; width:100%; height:230px; border-radius:10px; background:#fcf7f0;"></div>
+          <div style="display:flex; flex-direction:column; gap:8px;">
+            <span style="font-weight:600; font-size:19px; color:#4A3B30;">Annotation stickers</span>
+            <span style="font-size:15px; line-height:1.55; color:#5C4D40;">Tabs and stickers for marking the lines that stop you cold.</span>
+          </div>
+        </div>
+        <div class="gbc-reveal" data-rev-i="3" style="background:#FFFFFF; border:1px solid #EAE2D4; border-radius:16px; box-shadow:0 1px 3px rgba(74,59,48,0.05); padding:24px; display:flex; flex-direction:column; gap:18px;">
+          <div class="gbc-postcard-stage" style="width: 100%; height: 230px; perspective: 1400px; border-radius: 10px; overflow: hidden; background-color: #fcf7f0; padding: 30px; box-sizing: border-box">
+            <div class="gbc-postcard-flip" style="position:relative; width:100%; height:100%; transform-style:preserve-3d; will-change:transform;">
+              <img src="covers/postcard-front.png" alt="Postcard front" style="position:absolute; inset:0; width:100%; height:100%; object-fit:contain; backface-visibility:hidden; -webkit-backface-visibility:hidden; filter:drop-shadow(0 12px 22px rgba(74,59,48,0.26));">
+              <img src="covers/postcard-back.png" alt="Postcard back" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; backface-visibility: hidden; -webkit-backface-visibility: hidden; transform: rotateY(180deg); filter: drop-shadow(0 12px 22px rgba(74,59,48,0.12))">
+            </div>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:8px;">
+            <span style="font-weight:600; font-size:19px; color:#4A3B30;">A postcard back</span>
+            <span style="font-size:15px; line-height:1.55; color:#5C4D40;">Mail me your thoughts mid-book. I read every one.</span>
+          </div>
+        </div>
+        <div class="gbc-reveal" data-rev-i="4" style="background:#FFFFFF; border:1px solid #EAE2D4; border-radius:16px; box-shadow:0 1px 3px rgba(74,59,48,0.05); padding:24px; display:flex; flex-direction:column; gap:18px;">
+          <div class="gbc-chat-clip" style="position: relative; width: 100%; height: 230px; border-radius: 10px; overflow: hidden; background-color: #fcf7f0">
+            <div style="position:absolute; left:50%; top:12px; transform:translateX(-50%) scale(0.8); transform-origin:top center; width:212px; height:400px; background:#0E0E10; border-radius:38px 38px 0 0; padding:5px 5px 0; box-shadow:0 16px 38px rgba(74,59,48,0.3); box-sizing:border-box;">
+              <div style="position:relative; width:100%; height:100%; background:#FFFFFF; border-radius:34px 34px 0 0; overflow:hidden; display:flex; flex-direction:column; font-family:Inter,'Helvetica Neue',sans-serif;">
+                <div style="position:absolute; top:7px; left:50%; transform:translateX(-50%); width:42px; height:9px; background:#0E0E10; border-radius:6px; z-index:5;"></div>
+                <div style="display:flex; align-items:center; justify-content:space-between; padding:9px 16px 3px;">
+                  <span style="font-size:11px; font-weight:600; color:#0E0E10;">9:41</span>
+                  <div style="display:flex; align-items:center; gap:4px;">
+                    <svg width="15" height="10" viewBox="0 0 18 12" fill="#0E0E10"><rect x="0" y="8" width="3" height="4" rx="0.6"></rect><rect x="5" y="5.5" width="3" height="6.5" rx="0.6"></rect><rect x="10" y="3" width="3" height="9" rx="0.6"></rect><rect x="15" y="0.5" width="3" height="11.5" rx="0.6"></rect></svg>
+                    <svg width="14" height="10" viewBox="0 0 16 12" fill="none" stroke="#0E0E10" stroke-width="1.4" stroke-linecap="round"><path d="M1 4.2a11 11 0 0 1 14 0"></path><path d="M3.4 6.8a7.2 7.2 0 0 1 9.2 0"></path><path d="M5.8 9.3a3.4 3.4 0 0 1 4.4 0"></path><circle cx="8" cy="11" r="0.6" fill="#0E0E10" stroke="none"></circle></svg>
+                    <span style="display:inline-flex; align-items:center; gap:1px;"><span style="display:inline-block; width:16px; height:9px; border:1px solid #0E0E10; border-radius:2.5px; padding:1px; box-sizing:border-box;"><span style="display:block; width:78%; height:100%; background:#0E0E10; border-radius:1px;"></span></span><span style="display:inline-block; width:1.4px; height:4px; background:#0E0E10; border-radius:0 1px 1px 0;"></span></span>
+                  </div>
+                </div>
+                <div style="display:flex; align-items:center; gap:8px; padding:5px 11px 9px; border-bottom:1px solid #EFEFEF;">
+                  <span style="font-size:19px; color:#0E0E10; font-weight:400; line-height:0.7;">‹</span>
+                  <div style="width:28px; height:28px; border-radius:50%; background:#FBF7F0; border:1px solid #EAE2D4; display:flex; align-items:center; justify-content:center; flex:none;"><div style="display:flex; flex-direction:column; gap:1.5px; align-items:flex-start;"><span style="display:block; width:13px; height:2.5px; border-radius:1px; background:#C9A24B;"></span><span style="display:block; width:16px; height:2.5px; border-radius:1px; background:#B07A52;"></span><span style="display:block; width:18px; height:2.5px; border-radius:1px; background:#4A3B30;"></span></div></div>
+                  <div style="display:flex; flex-direction:column; gap:1px; flex:1; min-width:0;">
+                    <span style="font-size:12px; font-weight:700; color:#0E0E10; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">The Greatest Book Club</span>
+                    <span style="font-size:9px; color:#8E8E93;">48 members · active now</span>
+                  </div>
+                  <div style="display:flex; gap:11px; align-items:center;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0E0E10" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0E0E10" stroke-width="1.8"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>
+                  </div>
+                </div>
+                <div class="gbc-chat" style="flex:1; padding:11px 10px 0; display:flex; flex-direction:column; gap:3px; overflow:hidden;">
+                  <div class="gbc-chat-msg" style="display:flex; align-items:flex-end; gap:6px; margin-bottom:2px;">
+                    <div style="width:23px; height:23px; border-radius:50%; background:#B07A52; flex:none; display:flex; align-items:center; justify-content:center; color:#fff; font-size:9px; font-weight:600;">L</div>
+                    <div style="display:flex; flex-direction:column; gap:2px; max-width:74%;">
+                      <span style="font-size:9px; color:#8E8E93; padding-left:4px;">liam_beanz99</span>
+                      <span style="background:#EFEFEF; color:#262626; font-size:12px; line-height:1.32; padding:7px 12px; border-radius:18px;">Okay the Cathy and Heathcliff dynamic is so toxic lol</span>
+                    </div>
+                  </div>
+                  <div class="gbc-chat-msg" style="display:flex; flex-direction:column; align-items:flex-end; margin-bottom:7px;">
+                    <span style="background:linear-gradient(135deg,#B23CF0 0%,#5066F0 100%); color:#fff; font-size:12px; line-height:1.32; padding:7px 12px; border-radius:18px; max-width:74%;">Wait till you meet the second generation</span>
+                    <div class="gbc-chat-react" style="display:flex; align-items:center; gap:3px; background:#fff; border-radius:11px; padding:1px 5px; box-shadow:0 1px 4px rgba(0,0,0,0.16); margin-top:-6px; margin-right:8px; z-index:2;">
+                      <span style="font-size:9px;">😭</span>
+                      <div style="width:12px; height:12px; border-radius:50%; background:#7A6CA8; display:flex; align-items:center; justify-content:center; color:#fff; font-size:5.5px; font-weight:700;">K</div>
+                    </div>
+                  </div>
+                  <div class="gbc-chat-msg" style="display:flex; align-items:flex-end; gap:6px; margin-bottom:7px;">
+                    <div style="width:23px; height:23px; border-radius:50%; background:#C9A24B; flex:none; display:flex; align-items:center; justify-content:center; color:#fff; font-size:9px; font-weight:600;">T</div>
+                    <div style="display:flex; flex-direction:column; gap:2px; max-width:74%;">
+                      <span style="font-size:9px; color:#8E8E93; padding-left:4px;">Tiffany Campbell</span>
+                      <div style="display:flex; flex-direction:column; align-items:flex-start;">
+                        <span style="background:#EFEFEF; color:#262626; font-size:12px; line-height:1.32; padding:7px 12px; border-radius:18px;">The moors honestly feel like their own character</span>
+                        <div class="gbc-chat-react" style="display:flex; align-items:center; gap:3px; background:#fff; border-radius:11px; padding:1px 5px; box-shadow:0 1px 4px rgba(0,0,0,0.16); margin-top:-6px; margin-left:8px; z-index:2;">
+                          <span style="font-size:9px;">❤️</span>
+                          <div style="width:12px; height:12px; border-radius:50%; background:#B07A52; display:flex; align-items:center; justify-content:center; color:#fff; font-size:5.5px; font-weight:700;">L</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="gbc-chat-msg" style="display:flex; align-items:flex-end; gap:6px; margin-bottom:7px;">
+                    <div style="width:23px; height:23px; border-radius:50%; background:#7A6CA8; flex:none; display:flex; align-items:center; justify-content:center; color:#fff; font-size:9px; font-weight:600;">K</div>
+                    <span style="background:#EFEFEF; color:#262626; font-size:12px; line-height:1.32; padding:7px 12px; border-radius:18px; max-width:74%;">Cannot put it down 📖</span>
+                  </div>
+                  <div class="gbc-chat-msg" style="display:flex; flex-direction:column; align-items:flex-end; gap:3px;">
+                    <span style="background:linear-gradient(135deg,#B23CF0 0%,#5066F0 100%); color:#fff; font-size:12px; line-height:1.32; padding:7px 12px; border-radius:18px; max-width:74%;">Book call Sunday at 5?</span>
+                    <div style="display:flex; align-items:center; gap:7px; background:#3A6DF0; border-radius:18px; padding:8px 12px; max-width:74%;">
+                      <span style="color:#fff; font-size:10px; line-height:0;">▶</span>
+                      <div style="display:flex; align-items:center; gap:2px; height:16px;">
+                        <span style="width:2px; height:5px; background:#fff; border-radius:2px;"></span>
+                        <span style="width:2px; height:11px; background:#fff; border-radius:2px;"></span>
+                        <span style="width:2px; height:15px; background:#fff; border-radius:2px;"></span>
+                        <span style="width:2px; height:8px; background:#fff; border-radius:2px;"></span>
+                        <span style="width:2px; height:13px; background:#fff; border-radius:2px;"></span>
+                        <span style="width:2px; height:6px; background:#fff; border-radius:2px;"></span>
+                        <span style="width:2px; height:12px; background:#fff; border-radius:2px;"></span>
+                        <span style="width:2px; height:16px; background:#fff; border-radius:2px;"></span>
+                        <span style="width:2px; height:9px; background:#fff; border-radius:2px;"></span>
+                        <span style="width:2px; height:6px; background:#fff; border-radius:2px;"></span>
+                      </div>
+                    </div>
+                    <span style="font-size:8.5px; color:#8E8E93; padding-right:2px;">Seen by Tiffany Campbell</span>
+                  </div>
+                </div>
+                <div style="display:flex; align-items:center; gap:7px; padding:7px 10px 11px;">
+                  <div style="width:27px; height:27px; border-radius:50%; background:#3A6DF0; flex:none; display:flex; align-items:center; justify-content:center;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+                  </div>
+                  <div style="flex:1; display:flex; align-items:center; gap:7px; border:1px solid #DCDCDC; border-radius:16px; padding:7px 11px;">
+                    <span style="flex:1; font-size:11px; color:#8E8E93;">Message...</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0E0E10" stroke-width="1.8"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line></svg>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0E0E10" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><path d="M21 15l-5-5L5 21"></path></svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:8px;">
+            <span style="font-weight:600; font-size:19px; color:#4A3B30;">The private group</span>
+            <span style="font-size:15px; line-height:1.55; color:#5C4D40;">A room of readers on the same page, the same week.</span>
+          </div>
+        </div>
+        <div class="gbc-reveal" data-rev-i="5" style="border:1px dashed #DDD2C0; border-radius:16px; padding:28px; display:flex; align-items:center; justify-content:center;">
+          <span style="font-family:'Playfair Display',serif; font-style:italic; font-weight:500; font-size:18px; line-height:1.4; text-align:center; color:#5A4B40; max-width:760px;">You bring the book in whatever format you love, a Kindle, a paperback, a worn copy from a used shop. Everything else that turns it into something you'll keep, arrives in the mail each month.</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <div style="background:#FFFFFF; border-top:1px solid #EAE2D4; border-bottom:1px solid #EAE2D4;">
+    <div class="gbc-sec-pad" style="max-width:980px; margin:0 auto; padding:96px 24px; display:flex; flex-direction:column; gap:48px; align-items:center;">
+      <div style="display:flex; flex-direction:column; gap:16px; align-items:center; text-align:center;">
+        <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:1.76px; text-transform:uppercase; color:#B07A52;">How it works</span>
+        <h2 class="gbc-h-sec" style="margin: 0; font-family: 'Playfair Display',serif; font-weight: 700; font-size: 46px; letter-spacing: -0.48px; color: #4A3B30; font-style: italic">How each month unfolds</h2>
+      </div>
+      <div class="gbc-steps" style="width:100%; position:relative; display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:24px;">
+        <div class="gbc-steps-line" style="position:absolute; top:30px; left:12.5%; right:12.5%; height:1px; background:#E2D7C6; z-index:0;"></div>
+        <div class="gbc-reveal" data-rev-i="0" style="position:relative; z-index:1; display:flex; flex-direction:column; align-items:center; text-align:center; gap:16px;">
+          <div style="width:60px; height:60px; border-radius:50%; border:1.5px solid #D8C49B; background:#FBF7F0; display:flex; align-items:center; justify-content:center; font-family:'JetBrains Mono',monospace; font-size:16px; color:#C9A24B;">1</div>
+          <div style="display:flex; flex-direction:column; gap:8px;">
+            <span style="font-weight:600; font-size:16px; color:#4A3B30;">It arrives</span>
+            <span style="font-size:14px; line-height:1.55; color:#5C4D40;">Your envelope shows up. Open the letter first.</span>
+          </div>
+        </div>
+        <div class="gbc-reveal" data-rev-i="1" style="position:relative; z-index:1; display:flex; flex-direction:column; align-items:center; text-align:center; gap:16px;">
+          <div style="width:60px; height:60px; border-radius:50%; border:1.5px solid #D8C49B; background:#FBF7F0; display:flex; align-items:center; justify-content:center; font-family:'JetBrains Mono',monospace; font-size:16px; color:#C9A24B;">2</div>
+          <div style="display:flex; flex-direction:column; gap:8px;">
+            <span style="font-weight:600; font-size:16px; color:#4A3B30;">We read together</span>
+            <span style="font-size:14px; line-height:1.55; color:#5C4D40;">One book, one month, one easy pace.</span>
+          </div>
+        </div>
+        <div class="gbc-reveal" data-rev-i="2" style="position:relative; z-index:1; display:flex; flex-direction:column; align-items:center; text-align:center; gap:16px;">
+          <div style="width:60px; height:60px; border-radius:50%; border:1.5px solid #D8C49B; background:#FBF7F0; display:flex; align-items:center; justify-content:center; font-family:'JetBrains Mono',monospace; font-size:16px; color:#C9A24B;">3</div>
+          <div style="display:flex; flex-direction:column; gap:8px;">
+            <span style="font-weight:600; font-size:16px; color:#4A3B30;">You write back</span>
+            <span style="font-size:14px; line-height:1.55; color:#5C4D40;">Mail your postcard whenever the book moves you.</span>
+          </div>
+        </div>
+        <div class="gbc-reveal" data-rev-i="3" style="position:relative; z-index:1; display:flex; flex-direction:column; align-items:center; text-align:center; gap:16px;">
+          <div style="width:60px; height:60px; border-radius:50%; border:1.5px solid #D8C49B; background:#FBF7F0; display:flex; align-items:center; justify-content:center; font-family:'JetBrains Mono',monospace; font-size:16px; color:#C9A24B;">4</div>
+          <div style="display:flex; flex-direction:column; gap:8px;">
+            <span style="font-weight:600; font-size:16px; color:#4A3B30;">We talk it through</span>
+            <span style="font-size:14px; line-height:1.55; color:#5C4D40;">I read the postcards to the group and we react together.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHY -->
+  <div style="background:radial-gradient(900px 480px at 70% 34%, #FFFFFF 0%, #FBF7F0 100%);">
+    <div class="gbc-sec-pad" style="max-width:940px; margin:0 auto; padding:96px 24px; display:flex; flex-wrap:wrap; gap:52px; align-items:center; justify-content:center;">
+      <img src="uploads/about.gif" alt="Katherine with a stack of books" class="gbc-why-img gbc-reveal" data-rev-i="0" style="display:block; flex:1 1 320px; height:440px; object-fit:cover; border-radius:14px; box-shadow:0 16px 40px rgba(74,59,48,0.14);" />
+      <div class="gbc-reveal" data-rev-i="1" style="flex:1 1 360px; display:flex; flex-direction:column; gap:18px;">
+        <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:1.76px; text-transform:uppercase; color:#B07A52;">Why I'm doing this</span>
+        <p style="margin:0; font-size:16px; line-height:1.65; color:#5C4D40;">A while back I started ranking the hundred greatest books ever written and posting them one at a time.<br>I figured a few friends might care.<br>Thousands of people showed up to argue, agree, and read along.</p>
+        <p style="margin:0; font-size:16px; line-height:1.65; color:#5C4D40;">But watching a ranking isn't reading the books. So this is the next step. We read them together, one a month, the way I always wished someone would read them with me. I'm starting with fifty people, because the first group sets the tone for everything after. I'd love for you to be one of them.</p>
+        <span style="font-family:'Playfair Display',serif; font-style:italic; font-weight:500; font-size:19px; color:#B07A52;">— Katherine</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- TESTIMONIALS -->
+  <div style="background:#FBF7F0; border-top:1px solid #EAE2D4;">
+    <div class="gbc-sec-pad" style="margin:0 auto; padding:80px 0; display:flex; flex-direction:column; gap:16px; align-items:center;">
+      <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:1.76px; text-transform:uppercase; color:#B07A52;">What readers are saying</span>
+      <div class="gbc-quotes-mask" style="width:100%; overflow:hidden; -webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent); mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);">
+        <div class="gbc-quotes-track" id="gbc-quotes-track"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div style="background:linear-gradient(rgba(46,33,22,0.55),rgba(46,33,22,0.62)), url('uploads/cta-background-69f1733b.png') center/cover no-repeat;">
+    <div class="gbc-sec-pad" style="max-width:620px; margin:0 auto; padding:96px 24px; display:flex; flex-direction:column; gap:24px; align-items:center; text-align:center;">
+      <div style="box-sizing: border-box; display: flex; flex-direction: column; gap: 0px; justify-content: center"><span style="font-family: 'JetBrains Mono',monospace; font-size: 11px; letter-spacing: 1.98px; text-transform: uppercase; color: #C9A24B">Reserve your spot</span><h2 class="gbc-h-sec" style="margin: 0; font-family: 'Playfair Display',serif; font-weight: 700; font-size: 46px; letter-spacing: -0.57px; color: #FBF7F0; font-style: italic">Save your spot.</h2></div>
+
+      <p style="margin:0; font-size:15px; line-height:1.55; color:#CDBEAA; max-width:420px;"><span style="color:#E2B45A;">$10/mo locked for life</span>, and only <span style="color:#E2B45A;">fifty</span> of us. Drop your email and you're first in line.</p>
+      <div style="width:100%; max-width:420px; display:flex; flex-direction:column; gap:10px;">
+        <input class="gbc-input" type="email" placeholder="name@example.com" style="border:1.5px solid #DDD2C0; border-radius:8px; background:#FFFFFF; padding:13px 14px; font-family:Inter, sans-serif; font-size:15px; color:#4A3B30; outline:none; transition:border-color .15s, box-shadow .15s;">
+        <button class="gbc-btn" type="button" onclick="document.getElementById('gbc-cta-done').style.display='inline'; return false;" style="display:inline-flex; align-items:center; justify-content:center; border:1.5px solid transparent; cursor:pointer; border-radius:8px; background:#4A8C6F; box-shadow:0 2px 6px rgba(0,0,0,0.22); padding:13px 26px; font-family:Inter, sans-serif; font-weight:600; font-size:14px; letter-spacing:0.01em; line-height:1; color:#FBF7F0; transition:background .15s, box-shadow .15s, transform .12s;">Reserve my founding spot</button>
+        <span id="gbc-cta-done" style="display:none; font-size:13px; color:#9FD3BB; font-weight:600;">✓ You're on the list — check your inbox.</span>
+      </div>
+      <span style="font-size:12.5px; color:#A89580;">No payment today, no commitment. Just your spot held and your price locked.</span>
+      <a href="index.html" style="font-size:13px; color:#CDBEAA; text-decoration:underline;">Just here for the list? Click here</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="background:#FBF7F0; padding:48px 24px;">
+    <div style="max-width:1080px; margin:0 auto; display:flex; flex-direction:column; align-items:center; gap:12px;">
+      <div style="display:flex; flex-direction:column; gap:3px; align-items:center;">
+        <div style="width:24px; height:4px; border-radius:2px; background:#C9A24B;"></div>
+        <div style="width:28px; height:4px; border-radius:2px; background:#B07A52;"></div>
+        <div style="width:32px; height:4px; border-radius:2px; background:#4A3B30;"></div>
+      </div>
+      <span style="font-family:'Playfair Display',serif; font-style:italic; font-weight:500; font-size:15px; color:#4A3B30;">The Greatest Book Club</span>
+      <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.44px; color:#9C8E7E;">© 2026 The Greatest Book Club</span>
+    </div>
+  </div>
+
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  // --- Build the looping book-spine ticker (16 placeholder spines) ---
+  (function () {
+    var track = document.getElementById("gbc-ticker-track");
+    if (!track) return;
+    var html = "";
+    for (var i = 0; i < 16; i++) {
+      html += '<div style="flex:none; width:167px; height:240px; border-radius:5px; background:linear-gradient(135deg,#EFE7D8 0,#EFE7D8 6%,#F4EEE2 6%,#F4EEE2 12%); box-shadow:0 6px 18px rgba(74,59,48,0.14); display:flex; align-items:center; justify-content:center;"><span style="font-family:\'JetBrains Mono\',monospace; font-size:10px; letter-spacing:0.72px; color:#A89880;">cover</span></div>';
+    }
+    track.innerHTML = html;
+  })();
+
+  // --- Build the looping testimonials marquee (8 quotes x2 for seamless loop) ---
+  (function () {
+    var track = document.getElementById("gbc-quotes-track");
+    if (!track) return;
+    var quotes = [
+      { text: "I like that there's this movement of reading more classic novels.", by: "— reader on Instagram" },
+      { text: "It's also my goal, I've read 61 so far.", by: "— reader on Instagram" },
+      { text: "That's exactly what I thought too. I'm on my 32nd book, balancing med school and finishing these classics.", by: "— reader on Instagram" },
+      { text: "I've read 33, with another 20 on my shelves waiting. My favorites so far: The Grapes of Wrath, One Hundred Years of Solitude, The Stranger.", by: "— reader on Instagram" },
+      { text: "I very much like your reviews. Deep insights in an abbreviated way.", by: "— reader on Instagram" },
+      { text: "Love a good reading challenge. I've read a lot on your list and have plenty more on my TBR.", by: "— reader on Instagram" },
+      { text: "Ooo good timing, I just started the Odyssey.", by: "— reader on Instagram" },
+      { text: "Heck yeah. Your bio, here I come. Thank you.", by: "— reader on Instagram" }
+    ];
+    function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); }
+    var all = quotes.concat(quotes), html = "";
+    all.forEach(function (q) {
+      html += '<div style="flex:none; width:320px; display:flex; flex-direction:column; gap:16px; padding:28px 30px; background:#FFFFFF; border:1px solid #EFE7D8; border-radius:14px; box-shadow:0 1px 3px rgba(74,59,48,0.04);">' +
+        '<span style="font-family:\'Playfair Display\',serif; font-size:17px; line-height:1.5; color:#4A3B30;">' + esc(q.text) + '</span>' +
+        '<span style="font-family:\'JetBrains Mono\',monospace; font-size:11px; letter-spacing:0.4px; color:#9C8E7E;">' + esc(q.by) + '</span>' +
+      '</div>';
+    });
+    track.innerHTML = html;
+  })();
+
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // --- Scroll reveal for sections/cards ---
+  (function reveal() {
+    var els = Array.prototype.slice.call(document.querySelectorAll('.gbc-reveal:not(.gbc-in)'));
+    if (!els.length) { setTimeout(reveal, 120); return; }
+    if (!('IntersectionObserver' in window)) { els.forEach(function (el) { el.classList.add('gbc-in'); }); return; }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          var el = e.target;
+          var i = Number(el.getAttribute('data-rev-i') || 0);
+          el.style.transitionDelay = (i * 80) + 'ms';
+          el.classList.add('gbc-in');
+          io.unobserve(el);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+    els.forEach(function (el) { io.observe(el); });
+  })();
+
+  // --- Bookmark fan (GSAP scroll) ---
+  (function setupFan() {
+    var cards = Array.prototype.slice.call(document.querySelectorAll('.gbc-bm'));
+    if (!cards.length || !window.gsap || (!reduce && !window.ScrollTrigger)) { setTimeout(setupFan, 120); return; }
+    var gsap = window.gsap;
+    if (reduce) { cards.forEach(function (c) { gsap.set(c, { rotation: Number(c.dataset.angle), y: 0 }); }); return; }
+    if (window.ScrollTrigger) gsap.registerPlugin(window.ScrollTrigger);
+    gsap.set(cards, { rotation: 0, y: 30, autoAlpha: 0 });
+    var fan = document.querySelector('.gbc-bm-fan');
+    gsap.to(cards, {
+      rotation: function (i, t) { return Number(t.dataset.angle); },
+      y: 0, autoAlpha: 1, ease: 'power2.out', stagger: 0.12,
+      scrollTrigger: window.ScrollTrigger ? { trigger: fan, start: 'top 85%', end: 'top 35%', scrub: 0.6 } : undefined,
+      duration: window.ScrollTrigger ? undefined : 0.9
+    });
+  })();
+
+  // --- Postcard flip (GSAP scroll) ---
+  (function setupPostcard() {
+    var flip = document.querySelector('.gbc-postcard-flip');
+    var stage = document.querySelector('.gbc-postcard-stage');
+    if (!flip || !window.gsap || (!reduce && !window.ScrollTrigger)) { setTimeout(setupPostcard, 120); return; }
+    var gsap = window.gsap;
+    if (reduce) { gsap.set(flip, { rotationY: 0 }); return; }
+    gsap.registerPlugin(window.ScrollTrigger);
+    gsap.set(flip, { rotationY: 0 });
+    gsap.to(flip, { rotationY: 180, ease: 'none', scrollTrigger: { trigger: stage, start: 'top 80%', end: 'bottom 30%', scrub: 0.6 } });
+  })();
+
+  // --- Group chat reveal (GSAP scroll) ---
+  (function setupChat() {
+    var msgs = Array.prototype.slice.call(document.querySelectorAll('.gbc-chat-msg'));
+    var reacts = Array.prototype.slice.call(document.querySelectorAll('.gbc-chat-react'));
+    var clip = document.querySelector('.gbc-chat-clip');
+    if (!msgs.length || !window.gsap || (!reduce && !window.ScrollTrigger)) { setTimeout(setupChat, 120); return; }
+    var gsap = window.gsap;
+    if (reduce) { gsap.set(msgs, { autoAlpha: 1, y: 0 }); gsap.set(reacts, { autoAlpha: 1, scale: 1 }); return; }
+    gsap.registerPlugin(window.ScrollTrigger);
+    gsap.set(msgs, { autoAlpha: 0, y: 12 });
+    gsap.set(reacts, { autoAlpha: 0, scale: 0.4 });
+    var tl = gsap.timeline({ scrollTrigger: { trigger: clip, start: 'top 78%', end: 'bottom 32%', scrub: 0.5 } });
+    msgs.forEach(function (m) {
+      tl.to(m, { autoAlpha: 1, y: 0, duration: 0.5, ease: 'power2.out' });
+      var r = m.querySelector('.gbc-chat-react');
+      if (r) tl.to(r, { autoAlpha: 1, scale: 1, duration: 0.4, ease: 'back.out(2)' }, '+=0.15');
+    });
+    tl.to({}, { duration: 0.3 });
+    if (window.ScrollTrigger) window.ScrollTrigger.refresh();
+  })();
+})();
+</script>
+</body>
+</html>
