@@ -23,12 +23,12 @@ window.KATHERINE_DATA = {
   "books": [
     {
       "rank": 1,
-      "title": "Nineteen Eighty-Four",
+      "title": "1984",
       "author": "George Orwell",
       "tier": "D",
       "description": "A chilling vision of total surveillance where even your thoughts aren't your own.",
       "amazon_link": "https://www.amazon.com/s?k=Nineteen+Eighty-Four+George+Orwell",
-      "cover_url": "https://images.penguinrandomhouse.com/cover/9780141187761"
+      "cover_url": "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcTMXRPGz3dVDXU1uXnVtN8Tu3Wjx6VJbUkQRHhT4qRX2ZM8AIM&usqp=CAc"
     },
     {
       "rank": 2,
