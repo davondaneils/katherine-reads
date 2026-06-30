@@ -36,8 +36,8 @@ window.KATHERINE_DATA = {
       "author": "Charles Dickens",
       "tier": "C",
       "description": "Love and sacrifice set against the blood and fervor of the French Revolution.",
-      "amazon_link": "https://www.amazon.com/s?k=A+Tale+of+Two+Cities+Charles+Dickens",
-      "cover_url": "https://images.penguinrandomhouse.com/cover/9780241589182"
+      "amazon_link": "https://amzn.to/4eW7QGp",
+      "cover_url": "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcSTbUVHZxU41-tw3kerqPlmRAn_TmR5N6O6HhjIloW0bUmUY50O&usqp=CAc"
     },
     {
       "rank": 3,
