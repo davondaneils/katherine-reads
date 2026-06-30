@@ -27,7 +27,7 @@ window.KATHERINE_DATA = {
       "author": "George Orwell",
       "tier": "D",
       "description": "A chilling vision of total surveillance where even your thoughts aren't your own.",
-      "amazon_link": "https://www.amazon.com/s?k=Nineteen+Eighty-Four+George+Orwell",
+      "amazon_link": "https://amzn.to/4whjXVx",
       "cover_url": "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcTMXRPGz3dVDXU1uXnVtN8Tu3Wjx6VJbUkQRHhT4qRX2ZM8AIM&usqp=CAc"
     },
     {
